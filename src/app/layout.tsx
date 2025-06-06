@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import '@/styles/global.css';
 import { ReactNode } from 'react';
 import { cn } from '@/utils/helpers';
+import FloatingActions from '@/components/FloatingActions';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -30,6 +31,7 @@ export default function RootLayout({
         )}
       >
         {children}
+        <FloatingActions />
       </body>
     </html>
   );

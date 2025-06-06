@@ -68,7 +68,7 @@ export default function Carousel() {
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent rounded-xl flex items-center">
                 <div className="max-w-xl pl-6 sm:pl-12 text-white space-y-4">
-                  <h2 className="text-6xl sm:text-4xl font-bold">
+                  <h2 className="text-3xl sm:text-3xl md:text-4xl font-semibold">
                     {slide.title}
                   </h2>
                   <p className="text-lg sm:text-xl font-medium">
