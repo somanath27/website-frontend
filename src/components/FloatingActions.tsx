@@ -23,9 +23,10 @@ export default function FloatingActions() {
   return (
     <div className="fixed bottom-6 right-6 flex flex-col items-center space-y-4 z-50">
       <motion.a
-        href="https://wa.me/919439263319"
+        href={`https://wa.me/919439263319?text=${encodeURIComponent('Hi, I want RO service at my location.')}`}
         target="_blank"
         rel="noopener noreferrer"
+        className="inline-block mt-4 text-green-600 underline"
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         whileHover={{ scale: 1.1 }}

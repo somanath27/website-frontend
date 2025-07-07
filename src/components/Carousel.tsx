@@ -8,25 +8,18 @@ import generateKey from '@/utils/generateKey';
 
 const slides = [
   {
-    image: '/assets/images/slide1.jpeg',
+    image: '/assets/images/water-banner.jpg',
     title: 'Pure Water, Healthy Life',
     subtitle: 'Best RO service at your doorstep.',
     description:
       'We offer hassle-free installation, maintenance, and repair of your water purifiers with trusted professionals.',
   },
   {
-    image: '/assets/images/banner1.jpg',
+    image: '/assets/images/softner-banner.jpg',
     title: 'Expert Technicians',
     subtitle: 'Trained and certified service providers.',
     description:
       'Our skilled team ensures long-lasting performance of your RO system with top-notch expertise.',
-  },
-  {
-    image: '/assets/images/slide3.jpeg',
-    title: 'Quick Booking',
-    subtitle: 'Book your service in a few seconds.',
-    description:
-      'Convenient booking options with fast response — because clean water shouldn’t wait.',
   },
 ];
 
@@ -58,7 +51,7 @@ export default function Carousel() {
       >
         {slides.map((slide) => (
           <div key={generateKey()} className="relative">
-            <div className="w-full h-[500px] sm:h-[500px] md:h-[600px] lg:h-[500px] relative">
+            <div className="w-full mt-10 h-[500px] sm:h-[500px] md:h-[600px] lg:h-[500px] relative">
               <Image
                 src={slide.image}
                 alt={slide.title}

@@ -2,14 +2,14 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { Menu, X, PhoneCall } from 'lucide-react';
+import { Menu, X, PhoneCallIcon } from 'lucide-react';
 import Image from 'next/image';
 
 const navLinks = [
   { name: 'Home', href: '/' },
   { name: 'About Us', href: '/about' },
   { name: 'Services', href: '/services' },
-  { name: 'Blog', href: '/blog' },
+  { name: 'Blog', href: '/blogs' },
   { name: 'Contact Us', href: '/contact' },
 ];
 
@@ -17,67 +17,103 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="fixed w-full h-16 z-50 bg-gradient-to-r from-white via-white to-gray-100 shadow">
-      <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        {/* Logo and Name */}
-        <div className="flex items-center gap-3">
+    <header className="fixed inset-x-0 top-0 z-50 h-16 bg-gradient-to-r from-white via-white to-gray-100 shadow">
+      <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-4">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-3">
           <Image
-            src="/assets/images/logo-header.webp"
+            src="/assets/images/logo.png"
             alt="RO Service Logo"
-            width={60}
-            height={40}
+            width={100}
+            height={60}
+            priority
           />
-        </div>
+        </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex space-x-6">
-          {navLinks.map((link) => (
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-6 font-medium">
+          {navLinks.map(({ name, href }) => (
             <Link
-              key={link.name}
-              href={link.href}
-              className="text-black hover:text-blue-500 transition font-medium "
+              key={name}
+              href={href}
+              className="text-[#101010] transition hover:text-blue-500"
             >
-              {link.name}
+              {name}
             </Link>
           ))}
         </nav>
-        <div className="hidden md:flex items-center gap-2 text-black font-medium">
-          <PhoneCall size={20} className="text-blue-500" />
-          <a href="tel:+919999999999" className="hover:underline">
-            +91 9439263319
-          </a>
+
+        {/* Phone number and Book Now button */}
+        <div className="hidden md:flex items-center gap-4 text-[#101010] font-medium">
+          <div className="flex items-center gap-2">
+            <PhoneCallIcon
+              size={16}
+              className="text-blue-500"
+              aria-hidden="true"
+            />
+            <a
+              href="tel:+919439263319"
+              className="text-[#101010] hover:text-blue-600 hover:underline transition duration-200"
+              aria-label="Call +91 9439263319"
+            >
+              +91 9439263319
+            </a>
+          </div>
+          <Link
+            href="/booking"
+            className="ml-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition"
+            aria-label="Book Now"
+          >
+            Book Now
+          </Link>
         </div>
 
+        {/* Mobile Hamburger Icon */}
         <button
           type="button"
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-black"
+          className="md:hidden text-[#101010] focus:outline-none"
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
         >
           {menuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* Mobile Side Menu */}
+      {/* Mobile Dropdown Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-gradient-to-b from-blue-600 to-indigo-600 px-6 py-4 space-y-4">
-          {navLinks.map((link) => (
+        <div className="md:hidden space-y-4 bg-gradient-to-b from-blue-600 to-indigo-600 px-6 py-6">
+          {navLinks.map(({ name, href }) => (
             <Link
-              key={link.name}
-              href={link.href}
-              className="block text-black hover:text-yellow-300 transition"
+              key={name}
+              href={href}
               onClick={() => setMenuOpen(false)}
+              className="block text-base font-medium text-white transition hover:text-yellow-300"
             >
-              {link.name}
+              {name}
             </Link>
           ))}
 
-          {/* Mobile Phone Number */}
-          <div className="flex items-center gap-2 text-black font-medium mt-4">
-            <PhoneCall size={20} className="text-yellow-300" />
-            <a href="tel:+919999999999" className="hover:underline">
-              +91 99999 99999
+          {/* Phone (mobile) */}
+          <div className="mt-4 flex items-center gap-2 text-base font-medium text-white">
+            <PhoneCallIcon
+              size={20}
+              className="text-yellow-300"
+              aria-hidden="true"
+            />
+            <a href="tel:+919439263319" className="hover:underline">
+              +91 9439263319
             </a>
           </div>
+
+          {/* Book Now (mobile) */}
+          <Link
+            href="/booking"
+            onClick={() => setMenuOpen(false)}
+            className="mt-4 inline-block w-full rounded-lg bg-yellow-400 px-4 py-2 text-center text-base font-semibold text-[#101010] transition hover:bg-yellow-300"
+            aria-label="Book Now"
+          >
+            Book Now
+          </Link>
         </div>
       )}
     </header>

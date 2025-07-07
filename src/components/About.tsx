@@ -2,6 +2,7 @@
 
 import generateKey from '@/utils/generateKey';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const aboutCards = [
   {
@@ -48,12 +49,14 @@ export default function AboutPage() {
           approach and strive to exceed your expectations with every service.
         </p>
 
-        <button
-          type="button"
-          className="bg-indigo-700 hover:bg-indigo-800 text-white px-6 py-2 rounded-lg transition duration-300"
-        >
-          Read More
-        </button>
+        <Link href="/about">
+          <button
+            type="button"
+            className="bg-indigo-700 hover:bg-indigo-800 text-white px-6 py-2 rounded-lg transition duration-300"
+          >
+            Read More
+          </button>
+        </Link>
       </section>
 
       {/* Cards Section */}

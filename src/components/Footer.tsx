@@ -26,16 +26,17 @@ export default function Footer() {
         <div>
           <div className="flex items-center gap-2 mb-4">
             <Image
-              src="/assets/images/logo-header.webp"
-              alt="Logo"
-              width={40}
-              height={40}
-              className="rounded"
+              src="/assets/images/logo-portrait.png"
+              alt="RO Service Logo"
+              width={80}
+              height={30}
+              priority
+              className="rounded-full"
             />
             <h3 className="text-xl font-bold">Saraswati Enterprises</h3>
           </div>
           <p className="text-sm text-gray-300">
-            Delivering trusted RO services for over 10 years. Your water, our
+            Delivering trusted RO services for over years. Your water, our
             priority.
           </p>
         </div>
