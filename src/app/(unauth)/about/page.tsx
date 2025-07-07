@@ -67,20 +67,31 @@ export default function AboutPage() {
   const [counterValues, setCounterValues] = useState(stats.map(() => 0));
 
   useEffect(() => {
-    const intervals = stats.map((stat, index) => {
-      return setInterval(() => {
+    const intervals: ReturnType<typeof setInterval>[] = [];
+
+    stats.forEach((stat, index) => {
+      const interval = setInterval(() => {
         setCounterValues((prev) => {
           const updated = [...prev];
-          if (updated[index] < stat.value) {
-            updated[index] += Math.ceil(stat.value / 60);
-          } else {
-            updated[index] = stat.value;
+          const current = updated[index] ?? 0;
+
+          if (current < stat.value) {
+            updated[index] = Math.min(
+              stat.value,
+              current + Math.ceil(stat.value / 60)
+            );
           }
+
           return updated;
         });
       }, 25);
+
+      intervals.push(interval);
     });
-    return () => intervals.forEach(clearInterval);
+
+    return () => {
+      intervals.forEach(clearInterval);
+    };
   }, []);
 
   return (
