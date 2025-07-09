@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
-  Mail,
+  MailIcon,
   Phone,
   MapPin,
   Facebook,
@@ -16,14 +16,14 @@ export default function Footer() {
   return (
     <footer className="bg-indigo-900 text-white py-12 px-4 sm:px-8 mt-16">
       <motion.div
-        className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10"
+        className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
         {/* Brand */}
-        <div>
+        <div className="md:col-span-3">
           <div className="flex items-center gap-2 mb-4">
             <Image
               src="/assets/images/logo-portrait.png"
@@ -42,11 +42,11 @@ export default function Footer() {
         </div>
 
         {/* Contact Info */}
-        <div>
+        <div className="md:col-span-2">
           <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
           <ul className="space-y-2 text-sm text-gray-300">
-            <li className="flex items-center gap-2">
-              <Mail size={16} /> saraswatienterprises.ro@gmail.com
+            <li className="flex items-center gap-2 text-sm">
+              <MailIcon size={16} /> saraswatienterprises.ro@gmail.com
             </li>
             <li className="flex items-center gap-2">
               <Phone size={16} /> +91 94392 63319
@@ -58,7 +58,7 @@ export default function Footer() {
         </div>
 
         {/* Quick Links */}
-        <div>
+        <div className="md:col-span-2">
           <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
           <ul className="space-y-2 text-sm text-gray-300">
             <li>
@@ -77,7 +77,7 @@ export default function Footer() {
         </div>
 
         {/* Socials */}
-        <div>
+        <div className="md:col-span-2">
           <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
           <div className="flex space-x-4 text-white">
             <Link href="https://facebook.com" target="_blank">
@@ -89,6 +89,21 @@ export default function Footer() {
             <Link href="https://twitter.com" target="_blank">
               <Twitter className="hover:text-sky-400" />
             </Link>
+          </div>
+        </div>
+
+        {/* Map */}
+        <div className="md:col-span-3">
+          <h4 className="text-lg font-semibold mb-4">Our Location</h4>
+          <div className="w-full h-48 md:h-40 lg:h-56 rounded-md overflow-hidden border border-gray-400">
+            <iframe
+              title="Saraswati Enterprises Location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3717.4625345274685!2d86.68638187380591!3d21.292732378662528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1c6fb9a80035e7%3A0x183a87f8b4161a1a!2sSaraswati%20Enterprises!5e0!3m2!1sen!2sin!4v1752041765504!5m2!1sen!2sin"
+              className="w-full h-full"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </div>
       </motion.div>
