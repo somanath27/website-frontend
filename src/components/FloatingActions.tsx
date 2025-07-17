@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { ChevronUp } from 'lucide-react';
+import { ChevronUp, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
@@ -22,14 +22,28 @@ export default function FloatingActions() {
 
   return (
     <div className="fixed bottom-6 right-6 flex flex-col items-center space-y-4 z-50">
+      {/* Phone Call Button */}
       <motion.a
-        href={`https://wa.me/919439263319?text=${encodeURIComponent('Hi, I want RO service at my location.')}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-block mt-4 text-green-600 underline"
+        href="tel:+919439263319"
+        className="bg-blue-600 text-white p-3 rounded-full shadow-md hover:bg-green-700"
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         whileHover={{ scale: 1.1 }}
+        title="Call Now"
+      >
+        <Phone size={16} />
+      </motion.a>
+
+      {/* WhatsApp Button */}
+      <motion.a
+        href={`https://wa.me/919439263319?text=${encodeURIComponent('Hi Rakesh, I want RO service at my location.')}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-block mt-2"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        whileHover={{ scale: 1.1 }}
+        title="Chat on WhatsApp"
       >
         <Image
           src="/assets/images/whatsapp.png"
@@ -47,6 +61,7 @@ export default function FloatingActions() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
+          title="Scroll to Top"
         >
           <ChevronUp size={20} />
         </motion.button>

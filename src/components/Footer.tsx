@@ -97,12 +97,10 @@ export default function Footer() {
           <h4 className="text-lg font-semibold mb-4">Our Location</h4>
           <div className="w-full h-48 md:h-40 lg:h-56 rounded-md overflow-hidden border border-gray-400">
             <iframe
-              title="Saraswati Enterprises Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3717.4625345274685!2d86.68638187380591!3d21.292732378662528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1c6fb9a80035e7%3A0x183a87f8b4161a1a!2sSaraswati%20Enterprises!5e0!3m2!1sen!2sin!4v1752041765504!5m2!1sen!2sin"
+              title="Saraswati Enterprises OpenStreetMap Location"
+              src="https://www.google.com/maps?q=Saraswati+Enterprises,+Uttareswar,+Soro,+Balasore+756045&output=embed"
               className="w-full h-full"
-              allowFullScreen
               loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
         </div>
