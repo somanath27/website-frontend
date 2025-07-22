@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Menu, X, PhoneCallIcon } from 'lucide-react';
 import Image from 'next/image';
+import CustomMarquee from './CustomMarquee';
 
 const navLinks = [
   { name: 'Home', href: '/' },
@@ -19,17 +20,7 @@ export default function Header() {
   return (
     <>
       {/* 👇 Marquee Added */}
-      <div className="fixed top-0 left-0 w-full bg-indigo-700 overflow-hidden whitespace-nowrap text-white text-sm py-2 z-[60]">
-        <div
-          className="inline-block"
-          style={{
-            animation: 'scroll 18s linear infinite',
-          }}
-        >
-          🚀 Grand Opening Soon! Get Exclusive Offers on your first RO service
-          booking. 📞 Call 9439263319 or 📲 WhatsApp now! &nbsp;&nbsp;&nbsp;
-        </div>
-      </div>
+      <CustomMarquee />
 
       <header className="fixed inset-x-0 top-8 z-50 h-16 bg-gradient-to-r from-white via-white to-gray-100 shadow">
         <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-4">
