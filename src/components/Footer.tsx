@@ -97,6 +97,7 @@ export default function Footer() {
           <h4 className="text-lg font-semibold mb-4">Our Location</h4>
           <div className="w-full h-48 md:h-40 lg:h-56 rounded-md overflow-hidden border border-gray-400">
             <iframe
+              crossorigin="anonymous"
               title="Saraswati Enterprises OpenStreetMap Location"
               src="https://www.google.com/maps?q=Saraswati+Enterprises,+Uttareswar,+Soro,+Balasore+756045&output=embed"
               className="w-full h-full"
