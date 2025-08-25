@@ -4,6 +4,7 @@ import '@/styles/global.css';
 import { ReactNode } from 'react';
 import { cn } from '@/utils/helpers';
 import FloatingActions from '@/components/FloatingActions';
+import Script from 'next/script';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -15,19 +16,19 @@ export const metadata: Metadata = {
   description:
     'Saraswati Enterprises offers top-quality water purifier sales, service, and installation in Soro, Balasore, Odisha. Clean water for every home.',
   keywords: [
-    'Water Purifier Odisha',
-    'Water Purifier Service Balasore',
+    'Water Purifier Soro',
+    'Water Purifier Service Soro',
     'Soro Water Purifier',
     'Saraswati Enterprises',
-    'RO Installation',
+    'RO Installation in soro',
     'Water Purifier Repair',
-    'Odisha Water Filter',
+    'Water Filter in Soro',
   ],
   openGraph: {
     title: 'Saraswati Enterprises | Water Purifier Sales & Services',
     description:
       'Get clean, safe drinking water with Saraswati Enterprises. We provide reliable water purifier services in Odisha.',
-    url: 'https://yourdomain.com',
+    url: 'saraswatienterprises.net.in',
     siteName: 'Saraswati Enterprises',
     images: [
       {
@@ -60,6 +61,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=AW-17322869816"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'AW-17322869816');
+          `}
+      </Script>
       <body
         className={cn(
           inter.className,
