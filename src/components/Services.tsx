@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import generateKey from '@/utils/generateKey';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
 const services = [
   {
@@ -25,7 +25,7 @@ const services = [
   },
 ];
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: (i: number) => ({
     opacity: 1,
@@ -33,7 +33,7 @@ const cardVariants = {
     transition: {
       delay: i * 0.2,
       duration: 0.6,
-      ease: 'easeOut',
+      ease: [0.25, 0.1, 0.25, 1], // Cubic bezier array instead of string
     },
   }),
 };
