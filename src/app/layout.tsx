@@ -59,19 +59,22 @@ export default function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
+  const googleAdsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID;
   return (
     <html lang="en">
       <Script
         strategy="afterInteractive"
-        src="https://www.googletagmanager.com/gtag/js?id=AW-17322869816"
+        src={`https://www.googletagmanager.com/gtag/js?id=${googleAdsId}`}
       />
+
+      {/* Google Analytics */}
       <Script id="google-analytics" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'AW-17322869816');
-          `}
+          gtag('config', '${googleAdsId}');
+        `}
       </Script>
       <body
         className={cn(

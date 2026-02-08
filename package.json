@@ -6,6 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "rebuild": "npm run clean && npm run build",
+    "clean": "rimraf .next",
     "lint": "next lint",
     "check-types": "tsc --noEmit --pretty",
     "format": "next lint --fix && prettier '**/*.{json,yaml}' --write --ignore-path .gitignore"
