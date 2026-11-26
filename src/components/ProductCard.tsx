@@ -91,7 +91,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         {/* Details Link */}
         <Link
-          href={`/products/${product.category}/${product.brand.toLowerCase()}/${product.slug}`}
+          href={`/products/${product.category}/${product.slug}`}
           className="block w-full text-center py-2 border-2 border-blue-600 text-blue-600 rounded-md text-sm font-semibold hover:bg-blue-50 transition"
         >
           View Details

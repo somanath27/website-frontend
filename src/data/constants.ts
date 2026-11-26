@@ -1,8 +1,11 @@
 export const BUSINESS_INFO = {
   name: 'Saraswati Enterprises',
   phone: '+91 94392 63319',
+  phoneRaw: '9439263319',
   whatsapp: '+91 94392 63319',
+  whatsappRaw: '919439263319',
   email: 'saraswatienterprises.ro@gmail.com',
+  website: 'https://www.saraswatienterprises.net.in',
   city: 'Soro',
   district: 'Balasore',
   state: 'Odisha',

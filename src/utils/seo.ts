@@ -70,14 +70,14 @@ export const generateServiceSchema = (service: {
   areaServed: service.area || 'IN',
 });
 
-export const generateBreadcrumbSchema = (items: Array<{ name: string; url: string }>) => ({
+export const generateBreadcrumbSchema = (items: Array<{ name: string; url?: string }>) => ({
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: items.map((item, idx) => ({
     '@type': 'ListItem',
     position: idx + 1,
     name: item.name,
-    item: `https://www.saraswatienterprises.net.in${item.url}`,
+    ...(item.url && { item: `https://www.saraswatienterprises.net.in${item.url}` }),
   })),
 });
 

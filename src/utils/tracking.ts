@@ -30,10 +30,18 @@ declare global {
 
 /**
  * Track conversion events for GA4 and Google Ads
+ * Can be called with just event type, or with event and data object
  * Uses gtag if available, otherwise logs to console
  */
-export const trackEvent = (payload: TrackingEventPayload) => {
+export const trackEvent = (eventOrPayload: TrackingEventType | TrackingEventPayload, data?: Record<string, unknown>) => {
   if (typeof window === 'undefined') return;
+
+  // Handle both calling styles:
+  // trackEvent({ event: 'click_call', phone: '...' })
+  // trackEvent('click_call', { phone: '...' })
+  const payload: TrackingEventPayload = typeof eventOrPayload === 'string'
+    ? { event: eventOrPayload, ...data }
+    : eventOrPayload;
 
   // Send to GA4 via gtag
   if (typeof window.gtag !== 'undefined') {
