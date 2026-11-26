@@ -20,7 +20,8 @@
     "specifications": {
       "capacity": "600/750/900 mm",
       "suction": "2000 m³/h"
-    }
+    },
+    "image": "/assets/images/products/imelda-bldc.jpg"
   },
   {
     "id": "product-2",
@@ -45,7 +46,8 @@
     "specifications": {
       "capacity": "600/750/900 mm",
       "suction": "1600 m³/h"
-    }
+    },
+    "image": "/assets/images/products/cosima-bldc--cosima-plus.jpg"
   },
   {
     "id": "product-3",
@@ -67,7 +69,8 @@
     "specifications": {
       "capacity": "Model-specific",
       "suction": "20 L/hr (source listing)"
-    }
+    },
+    "image": "/assets/images/products/grand-star-example-model.jpg"
   },
   {
     "id": "product-4",
@@ -88,7 +91,8 @@
     "specifications": {
       "capacity": "Model-specific",
       "suction": "Model-specific"
-    }
+    },
+    "image": "/assets/images/products/supreme-plus-neo-2y.jpg"
   },
   {
     "id": "product-5",
@@ -109,7 +113,8 @@
     "specifications": {
       "capacity": "Model-specific",
       "suction": "Model-specific"
-    }
+    },
+    "image": "/assets/images/products/ace-plus-neo-2y.jpg"
   },
   {
     "id": "product-6",
@@ -130,7 +135,8 @@
     "specifications": {
       "capacity": "7L",
       "suction": "Model-specific"
-    }
+    },
+    "image": "/assets/images/products/allura.jpg"
   },
   {
     "id": "product-7",
@@ -151,7 +157,8 @@
     "specifications": {
       "capacity": "7L",
       "suction": "Model-specific"
-    }
+    },
+    "image": "/assets/images/products/allura-premia.jpg"
   },
   {
     "id": "product-8",
@@ -172,7 +179,8 @@
     "specifications": {
       "capacity": "Model-specific",
       "suction": "Model-specific"
-    }
+    },
+    "image": "/assets/images/products/eterna.jpg"
   },
   {
     "id": "product-9",
@@ -193,7 +201,8 @@
     "specifications": {
       "capacity": "Model-specific",
       "suction": "Model-specific"
-    }
+    },
+    "image": "/assets/images/products/sereno.jpg"
   },
   {
     "id": "product-10",
@@ -213,7 +222,8 @@
     "specifications": {
       "capacity": "8L (listing)",
       "suction": "Model-specific"
-    }
+    },
+    "image": "/assets/images/products/pureza.jpg"
   },
   {
     "id": "product-11",
@@ -233,7 +243,8 @@
     "specifications": {
       "capacity": "7L (listing)",
       "suction": "Model-specific"
-    }
+    },
+    "image": "/assets/images/products/evopure.jpg"
   },
   {
     "id": "product-12",
@@ -254,7 +265,8 @@
     "specifications": {
       "capacity": "12L (listing)",
       "suction": "Model-specific"
-    }
+    },
+    "image": "/assets/images/products/aquaveda.jpg"
   },
   {
     "id": "product-13",
@@ -276,7 +288,8 @@
     "specifications": {
       "capacity": "600/750/900 mm",
       "suction": "1700 m³/h (catalogue)"
-    }
+    },
+    "image": "/assets/images/products/marcella-bldc.jpg"
   },
   {
     "id": "product-14",
@@ -299,7 +312,8 @@
     "specifications": {
       "capacity": "600/750/900 mm",
       "suction": "1700 m³/h"
-    }
+    },
+    "image": "/assets/images/products/raylene-bldc--autoclean.jpg"
   },
   {
     "id": "product-15",
@@ -323,7 +337,8 @@
     "specifications": {
       "capacity": "600/750/900 mm",
       "suction": "1600 m³/h (catalogue)"
-    }
+    },
+    "image": "/assets/images/products/tiber-bldc.jpg"
   },
   {
     "id": "product-16",
@@ -344,7 +359,8 @@
     "specifications": {
       "capacity": "600/750/900 mm",
       "suction": "Model-specific"
-    }
+    },
+    "image": "/assets/images/products/divina-bldc.jpg"
   },
   {
     "id": "product-17",
@@ -368,7 +384,8 @@
     "specifications": {
       "capacity": "600/750/900 mm",
       "suction": "1550 m³/h (90 cm listing)"
-    }
+    },
+    "image": "/assets/images/products/florence-autoclean.jpg"
   },
   {
     "id": "product-18",
@@ -392,7 +409,8 @@
     "specifications": {
       "capacity": "90 cm listed",
       "suction": "1800 m³/h"
-    }
+    },
+    "image": "/assets/images/products/natalia-autoclean-island.jpg"
   },
   {
     "id": "product-19",
@@ -416,7 +434,8 @@
     "specifications": {
       "capacity": "600/750/900 mm",
       "suction": "1700 m³/h (90 cm listing)"
-    }
+    },
+    "image": "/assets/images/products/serena-plus-grey-bldc.jpg"
   },
   {
     "id": "product-20",
@@ -437,7 +456,8 @@
     "specifications": {
       "capacity": "600/750/900 mm",
       "suction": "Model-specific"
-    }
+    },
+    "image": "/assets/images/products/martina-bldc.jpg"
   },
   {
     "id": "product-21",
@@ -458,7 +478,8 @@
     "specifications": {
       "capacity": "600/750/900 mm",
       "suction": "Model-specific"
-    }
+    },
+    "image": "/assets/images/products/darcia-bldc.jpg"
   },
   {
     "id": "product-22",
@@ -482,7 +503,8 @@
     "specifications": {
       "capacity": "60 cm",
       "suction": "750 m³/h"
-    }
+    },
+    "image": "/assets/images/products/verita-ss-bf-2m.jpg"
   },
   {
     "id": "product-23",
@@ -506,6 +528,7 @@
     "specifications": {
       "capacity": "60 cm",
       "suction": "700 m³/h"
-    }
+    },
+    "image": "/assets/images/products/verita-tc-black-2m.jpg"
   }
 ]

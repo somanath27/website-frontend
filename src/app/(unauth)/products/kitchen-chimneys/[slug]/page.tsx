@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import products from '@/data/products.json';
 import { Product } from '@/types/product';
 import { BUSINESS_INFO } from '@/data/constants';
@@ -115,14 +116,23 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             {/* Product Image */}
             <div className="bg-white rounded-lg shadow-md p-8 flex items-center justify-center min-h-96">
-              <div className="text-center">
-                <div className="w-48 h-48 mx-auto bg-gray-200 rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-gray-500">Product Image</span>
+              {product.image ? (
+                <div className="relative w-full h-96">
+                  <Image
+                    src={product.image}
+                    alt={`${product.brand} ${product.model}`}
+                    fill
+                    className="object-contain"
+                    priority
+                  />
                 </div>
-                <p className="text-sm text-gray-600">
-                  High-quality images coming soon
-                </p>
-              </div>
+              ) : (
+                <div className="text-center">
+                  <div className="w-48 h-48 mx-auto bg-gray-200 rounded-lg flex items-center justify-center mb-4">
+                    <span className="text-gray-500">No Image</span>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Product Details */}
@@ -279,8 +289,19 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     key={relatedProduct.id}
                     className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition"
                   >
-                    <div className="bg-gray-200 h-40 flex items-center justify-center">
-                      <span className="text-gray-500">Product Image</span>
+                    <div className="relative bg-gray-200 h-40 w-full">
+                      {relatedProduct.image ? (
+                        <Image
+                          src={relatedProduct.image}
+                          alt={`${relatedProduct.brand} ${relatedProduct.model}`}
+                          fill
+                          className="object-contain"
+                        />
+                      ) : (
+                        <div className="flex items-center justify-center h-full">
+                          <span className="text-gray-500">No Image</span>
+                        </div>
+                      )}
                     </div>
                     <div className="p-4">
                       <p className="text-sm text-gray-600 font-medium">
