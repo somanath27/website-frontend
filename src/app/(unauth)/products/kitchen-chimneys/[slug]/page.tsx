@@ -4,17 +4,18 @@ import products from '@/data/products.json';
 import { Product } from '@/types/product';
 import { BUSINESS_INFO } from '@/data/constants';
 import { generateProductSchema, generateBreadcrumbSchema } from '@/utils/seo';
-import { trackEvent } from '@/utils/tracking';
+import { ProductCTAButtons, ProductDetailsCTA } from './ProductActions';
 
 interface ProductPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: ProductPageProps) {
+  const resolvedParams = await params;
   const product = (products as Product[]).find(
-    (p) => p.slug === params.slug && p.category === 'kitchen-chimneys'
+    (p) => p.slug === resolvedParams.slug && p.category === 'kitchen-chimneys'
   );
 
   if (!product) {
@@ -30,8 +31,8 @@ export async function generateMetadata({ params }: ProductPageProps) {
     openGraph: {
       title,
       description,
-      type: 'product',
-      url: `${BUSINESS_INFO.website}/products/kitchen-chimneys/${params.slug}`,
+      type: 'website',
+      url: `${BUSINESS_INFO.website}/products/kitchen-chimneys/${resolvedParams.slug}`,
     },
   };
 }
@@ -54,9 +55,10 @@ function getRelatedProducts(product: Product, count: number = 3) {
     .slice(0, count);
 }
 
-export default function ProductPage({ params }: ProductPageProps) {
+export default async function ProductPage({ params }: ProductPageProps) {
+  const resolvedParams = await params;
   const product = (products as Product[]).find(
-    (p) => p.slug === params.slug && p.category === 'kitchen-chimneys'
+    (p) => p.slug === resolvedParams.slug && p.category === 'kitchen-chimneys'
   );
 
   if (!product) {
@@ -199,22 +201,12 @@ export default function ProductPage({ params }: ProductPageProps) {
               </div>
 
               {/* CTA Buttons */}
-              <div className="space-y-3">
-                <a
-                  href={`https://wa.me/${BUSINESS_INFO.whatsappRaw}?text=${whatsappMessage}`}
-                  className="block w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg text-center transition"
-                  onClick={() => trackEvent('click_whatsapp', { product: product.model })}
-                >
-                  Enquire on WhatsApp
-                </a>
-                <a
-                  href={`tel:${BUSINESS_INFO.phoneRaw}`}
-                  className="block w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg text-center transition"
-                  onClick={() => trackEvent('click_call', { product: product.model })}
-                >
-                  Call for Details
-                </a>
-              </div>
+              <ProductCTAButtons
+                productModel={product.model}
+                whatsappUrl={`https://wa.me/${BUSINESS_INFO.whatsappRaw}?text=${whatsappMessage}`}
+                phoneUrl={`tel:${BUSINESS_INFO.phoneRaw}`}
+                colorTheme="amber"
+              />
             </div>
           </div>
 
@@ -367,28 +359,14 @@ export default function ProductPage({ params }: ProductPageProps) {
             <p className="text-lg mb-6 opacity-90">
               Contact Saraswati Enterprises for chimney sales, installation, and service
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href={`https://wa.me/${BUSINESS_INFO.whatsappRaw}?text=${encodeURIComponent(
-                  `Hi, I'm interested in the ${product.model}. Please send me details and pricing.`
-                )}`}
-                className="bg-green-500 hover:bg-green-600 px-6 py-3 rounded-lg font-bold transition"
-                onClick={() =>
-                  trackEvent('click_whatsapp', { source: 'product-detail-cta' })
-                }
-              >
-                WhatsApp Us
-              </a>
-              <a
-                href={`tel:${BUSINESS_INFO.phoneRaw}`}
-                className="bg-white text-amber-700 hover:bg-gray-100 px-6 py-3 rounded-lg font-bold transition"
-                onClick={() =>
-                  trackEvent('click_call', { source: 'product-detail-cta' })
-                }
-              >
-                Call Now
-              </a>
-            </div>
+            <ProductDetailsCTA
+              whatsappUrl={`https://wa.me/${BUSINESS_INFO.whatsappRaw}?text=${encodeURIComponent(
+                `Hi, I'm interested in the ${product.model}. Please send me details and pricing.`
+              )}`}
+              phoneUrl={`tel:${BUSINESS_INFO.phoneRaw}`}
+              source="product-detail-cta"
+              colorTheme="amber"
+            />
           </div>
         </div>
       </main>
