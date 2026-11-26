@@ -1,0 +1,511 @@
+[
+  {
+    "id": "product-1",
+    "category": "kitchen-chimneys",
+    "brand": "Hindware",
+    "model": "Imelda BLDC",
+    "slug": "imelda-bldc",
+    "capacity": "600/750/900 mm",
+    "suction": "2000 m³/h",
+    "features": [
+      "Filterless",
+      "BLDC motor",
+      "Turbo Boost 8+1",
+      "LED lamps",
+      "(catalog versions mention motion sensor/thermal auto-clean)"
+    ],
+    "warranty": "Warranty varies by catalogue/current model—verify before publishing",
+    "sourceUrl": "https://hindware.com/c/kitchen-appliances/bldc-chimneys",
+    "verificationNotes": "Confirm current SKU/variant warranty; catalogues differ",
+    "specifications": {
+      "capacity": "600/750/900 mm",
+      "suction": "2000 m³/h"
+    }
+  },
+  {
+    "id": "product-2",
+    "category": "kitchen-chimneys",
+    "brand": "Hindware",
+    "model": "Cosima BLDC / Cosima Plus",
+    "slug": "cosima-bldc--cosima-plus",
+    "capacity": "600/750/900 mm",
+    "suction": "1600 m³/h",
+    "features": [
+      "Filterless",
+      "BLDC",
+      "motion sensor & touch (Cosima)",
+      "9+1 speeds",
+      "auto-clean",
+      "LED",
+      "metal oil cup (Plus variant per brochure)"
+    ],
+    "warranty": "5 years comprehensive + 15 years motor (current Hindware warranty list for Cosima Plus/Cosima)",
+    "sourceUrl": "https://hindware.com/p/kitchen-appliances/cosima-bldc-90-in?childId=5287",
+    "verificationNotes": "Separate Cosima and Cosima Plus as distinct SKUs if applicable",
+    "specifications": {
+      "capacity": "600/750/900 mm",
+      "suction": "1600 m³/h"
+    }
+  },
+  {
+    "id": "product-3",
+    "category": "water-purifiers",
+    "brand": "KENT",
+    "model": "Grand Star (example model)",
+    "slug": "grand-star-example-model",
+    "capacity": "Model-specific",
+    "suction": "20 L/hr (source listing)",
+    "features": [
+      "RO+UV+UF+Alkaline+Copper+TDS control",
+      "9L tank",
+      "UV in tank",
+      "digital display"
+    ],
+    "warranty": "1 year warranty + 3 years free service (product page listing)",
+    "sourceUrl": "https://www.kent.co.in/products/kent-grand-star",
+    "verificationNotes": "Verify exact SKU and warranty",
+    "specifications": {
+      "capacity": "Model-specific",
+      "suction": "20 L/hr (source listing)"
+    }
+  },
+  {
+    "id": "product-4",
+    "category": "water-purifiers",
+    "brand": "KENT",
+    "model": "Supreme Plus Neo 2Y",
+    "slug": "supreme-plus-neo-2y",
+    "capacity": "Model-specific",
+    "suction": "Model-specific",
+    "features": [
+      "RO+UF+Inline UV+Alkaline+Copper+TDS Control",
+      "UV in tank",
+      "Mineral RO technology"
+    ],
+    "warranty": "2 years comprehensive (listing)",
+    "sourceUrl": "https://www.kent.co.in/collections/water-purifiers",
+    "verificationNotes": "Verify exact variant and price",
+    "specifications": {
+      "capacity": "Model-specific",
+      "suction": "Model-specific"
+    }
+  },
+  {
+    "id": "product-5",
+    "category": "water-purifiers",
+    "brand": "KENT",
+    "model": "Ace Plus Neo 2Y",
+    "slug": "ace-plus-neo-2y",
+    "capacity": "Model-specific",
+    "suction": "Model-specific",
+    "features": [
+      "RO+UF+Inline UV+Alkaline+Copper+TDS Control",
+      "UV in tank",
+      "Mineral RO technology"
+    ],
+    "warranty": "2 years comprehensive (listing)",
+    "sourceUrl": "https://www.kent.co.in/collections/water-purifiers",
+    "verificationNotes": "Verify exact variant and price",
+    "specifications": {
+      "capacity": "Model-specific",
+      "suction": "Model-specific"
+    }
+  },
+  {
+    "id": "product-6",
+    "category": "water-purifiers",
+    "brand": "Livpure",
+    "model": "Allura",
+    "slug": "allura",
+    "capacity": "7L",
+    "suction": "Model-specific",
+    "features": [
+      "RO+UV+UF+Copper",
+      "8-stage",
+      "sediment filter"
+    ],
+    "warranty": "Manufacturer site listing",
+    "sourceUrl": "https://livpure.com/collections/water-purifier",
+    "verificationNotes": "Check current model availability",
+    "specifications": {
+      "capacity": "7L",
+      "suction": "Model-specific"
+    }
+  },
+  {
+    "id": "product-7",
+    "category": "water-purifiers",
+    "brand": "Livpure",
+    "model": "Allura Premia",
+    "slug": "allura-premia",
+    "capacity": "7L",
+    "suction": "Model-specific",
+    "features": [
+      "RO+UV+UF+Copper+Mineralizer",
+      "10-stage",
+      "free maintenance offer listed"
+    ],
+    "warranty": "Offer/maintenance period varies",
+    "sourceUrl": "https://livpure.com/collections/water-purifier",
+    "verificationNotes": "Check current offer, price and warranty",
+    "specifications": {
+      "capacity": "7L",
+      "suction": "Model-specific"
+    }
+  },
+  {
+    "id": "product-8",
+    "category": "water-purifiers",
+    "brand": "Livpure",
+    "model": "Eterna",
+    "slug": "eterna",
+    "capacity": "Model-specific",
+    "suction": "Model-specific",
+    "features": [
+      "RO+UV+Copper",
+      "8-stage purification",
+      "maintenance offer listed"
+    ],
+    "warranty": "Offer varies",
+    "sourceUrl": "https://livpure.com/collections/water-purifier",
+    "verificationNotes": "Check current variant",
+    "specifications": {
+      "capacity": "Model-specific",
+      "suction": "Model-specific"
+    }
+  },
+  {
+    "id": "product-9",
+    "category": "water-purifiers",
+    "brand": "Livpure",
+    "model": "Sereno",
+    "slug": "sereno",
+    "capacity": "Model-specific",
+    "suction": "Model-specific",
+    "features": [
+      "RO+UV+UF+Minerals+Copper",
+      "stainless steel tank on listed version",
+      "8-stage"
+    ],
+    "warranty": "Offer/warranty varies",
+    "sourceUrl": "https://livpure.com/collections/water-purifier",
+    "verificationNotes": "Check current variant",
+    "specifications": {
+      "capacity": "Model-specific",
+      "suction": "Model-specific"
+    }
+  },
+  {
+    "id": "product-10",
+    "category": "water-purifiers",
+    "brand": "Kenstar",
+    "model": "Pureza",
+    "slug": "pureza",
+    "capacity": "8L (listing)",
+    "suction": "Model-specific",
+    "features": [
+      "RO+UF+UV+Copper+Alkaline+Mineralizer",
+      "7 stages (aggregator listing)"
+    ],
+    "warranty": "Not confirmed—verify manufacturer/distributor",
+    "sourceUrl": "https://www.smartprix.com/water_purifiers/kenstar-brand",
+    "verificationNotes": "Third-party listing; validate specs before publishing",
+    "specifications": {
+      "capacity": "8L (listing)",
+      "suction": "Model-specific"
+    }
+  },
+  {
+    "id": "product-11",
+    "category": "water-purifiers",
+    "brand": "Kenstar",
+    "model": "EvoPure",
+    "slug": "evopure",
+    "capacity": "7L (listing)",
+    "suction": "Model-specific",
+    "features": [
+      "RO+UV+Alkaline",
+      "listed filter life 3000L"
+    ],
+    "warranty": "Not confirmed—verify manufacturer/distributor",
+    "sourceUrl": "https://www.smartprix.com/water_purifiers/kenstar-brand",
+    "verificationNotes": "Third-party listing; validate specs before publishing",
+    "specifications": {
+      "capacity": "7L (listing)",
+      "suction": "Model-specific"
+    }
+  },
+  {
+    "id": "product-12",
+    "category": "water-purifiers",
+    "brand": "Kenstar",
+    "model": "AquaVeda",
+    "slug": "aquaveda",
+    "capacity": "12L (listing)",
+    "suction": "Model-specific",
+    "features": [
+      "RO+UV+UF+Copper+Alkaline+Minerals",
+      "7 stages",
+      "listed filter life 4000L"
+    ],
+    "warranty": "Not confirmed—verify manufacturer/distributor",
+    "sourceUrl": "https://www.smartprix.com/water_purifiers/kenstar-brand",
+    "verificationNotes": "Third-party listing; validate specs before publishing",
+    "specifications": {
+      "capacity": "12L (listing)",
+      "suction": "Model-specific"
+    }
+  },
+  {
+    "id": "product-13",
+    "category": "kitchen-chimneys",
+    "brand": "Hindware",
+    "model": "Marcella BLDC",
+    "slug": "marcella-bldc",
+    "capacity": "600/750/900 mm",
+    "suction": "1700 m³/h (catalogue)",
+    "features": [
+      "Filterless",
+      "BLDC",
+      "touch control",
+      "Turbo 8+1"
+    ],
+    "warranty": "5 years comprehensive + 15 years motor (verify SKU)",
+    "sourceUrl": "https://hindware.com/c/kitchen-appliances/bldc-chimneys",
+    "verificationNotes": "Catalogue starter specs; verify exact variant",
+    "specifications": {
+      "capacity": "600/750/900 mm",
+      "suction": "1700 m³/h (catalogue)"
+    }
+  },
+  {
+    "id": "product-14",
+    "category": "kitchen-chimneys",
+    "brand": "Hindware",
+    "model": "Raylene BLDC / Autoclean",
+    "slug": "raylene-bldc--autoclean",
+    "capacity": "600/750/900 mm",
+    "suction": "1700 m³/h",
+    "features": [
+      "Filterless",
+      "BLDC",
+      "motion sensor + touch",
+      "thermal autoclean",
+      "10 speed levels"
+    ],
+    "warranty": "5 years comprehensive + 15 years motor",
+    "sourceUrl": "https://hindware.com/p/kitchen-appliances/raylene-autoclean-90",
+    "verificationNotes": "Official product specs shown for Raylene Autoclean 90; verify variant",
+    "specifications": {
+      "capacity": "600/750/900 mm",
+      "suction": "1700 m³/h"
+    }
+  },
+  {
+    "id": "product-15",
+    "category": "kitchen-chimneys",
+    "brand": "Hindware",
+    "model": "Tiber BLDC",
+    "slug": "tiber-bldc",
+    "capacity": "600/750/900 mm",
+    "suction": "1600 m³/h (catalogue)",
+    "features": [
+      "Filterless",
+      "BLDC",
+      "dual-tone display",
+      "motion sensor",
+      "LED",
+      "Turbo 9+1"
+    ],
+    "warranty": "5 years comprehensive + 15 years motor (verify SKU)",
+    "sourceUrl": "https://hindware.com/c/kitchen-appliances/bldc-chimneys",
+    "verificationNotes": "Catalogue starter specs; verify exact variant",
+    "specifications": {
+      "capacity": "600/750/900 mm",
+      "suction": "1600 m³/h (catalogue)"
+    }
+  },
+  {
+    "id": "product-16",
+    "category": "kitchen-chimneys",
+    "brand": "Hindware",
+    "model": "Divina BLDC",
+    "slug": "divina-bldc",
+    "capacity": "600/750/900 mm",
+    "suction": "Model-specific",
+    "features": [
+      "BLDC",
+      "thermal autoclean",
+      "model features vary"
+    ],
+    "warranty": "3 years comprehensive + 12 years motor (warranty list)",
+    "sourceUrl": "https://hindware.com/warranty",
+    "verificationNotes": "Warranty per official list; confirm variant specifications",
+    "specifications": {
+      "capacity": "600/750/900 mm",
+      "suction": "Model-specific"
+    }
+  },
+  {
+    "id": "product-17",
+    "category": "kitchen-chimneys",
+    "brand": "Hindware",
+    "model": "Florence Autoclean",
+    "slug": "florence-autoclean",
+    "capacity": "600/750/900 mm",
+    "suction": "1550 m³/h (90 cm listing)",
+    "features": [
+      "BLDC/MaxX Silence",
+      "slant design",
+      "filterless",
+      "motion sensor + touch",
+      "thermal autoclean",
+      "9 speed levels"
+    ],
+    "warranty": "3 years comprehensive + 12 years motor (official product listing)",
+    "sourceUrl": "https://hindware.com/p/kitchen-appliances/florence-autoclean-90",
+    "verificationNotes": "Official product page; verify variant",
+    "specifications": {
+      "capacity": "600/750/900 mm",
+      "suction": "1550 m³/h (90 cm listing)"
+    }
+  },
+  {
+    "id": "product-18",
+    "category": "kitchen-chimneys",
+    "brand": "Hindware",
+    "model": "Natalia Autoclean (Island)",
+    "slug": "natalia-autoclean-island",
+    "capacity": "90 cm listed",
+    "suction": "1800 m³/h",
+    "features": [
+      "BLDC",
+      "MaxX Silence",
+      "filterless",
+      "double-side touch",
+      "thermal autoclean",
+      "island mount"
+    ],
+    "warranty": "5 years comprehensive + 15 years motor",
+    "sourceUrl": "https://hindware.com/p/kitchen-appliances/natalia-autoclean-90",
+    "verificationNotes": "Official page describes 90 cm island model",
+    "specifications": {
+      "capacity": "90 cm listed",
+      "suction": "1800 m³/h"
+    }
+  },
+  {
+    "id": "product-19",
+    "category": "kitchen-chimneys",
+    "brand": "Hindware",
+    "model": "Serena Plus Grey BLDC",
+    "slug": "serena-plus-grey-bldc",
+    "capacity": "600/750/900 mm",
+    "suction": "1700 m³/h (90 cm listing)",
+    "features": [
+      "BLDC",
+      "slant design",
+      "filterless",
+      "motion sensor + touch",
+      "thermal autoclean",
+      "11 speed levels"
+    ],
+    "warranty": "5 years comprehensive + 15 years motor",
+    "sourceUrl": "https://hindware.com/p/kitchen-appliances/serena-plus-autoclean-90",
+    "verificationNotes": "Official product page; verify colour/size variant",
+    "specifications": {
+      "capacity": "600/750/900 mm",
+      "suction": "1700 m³/h (90 cm listing)"
+    }
+  },
+  {
+    "id": "product-20",
+    "category": "kitchen-chimneys",
+    "brand": "Hindware",
+    "model": "Martina BLDC",
+    "slug": "martina-bldc",
+    "capacity": "600/750/900 mm",
+    "suction": "Model-specific",
+    "features": [
+      "BLDC",
+      "thermal autoclean",
+      "range features vary by SKU"
+    ],
+    "warranty": "3 years comprehensive + 12 years motor (warranty list)",
+    "sourceUrl": "https://hindware.com/c/kitchen-appliances/bldc-chimneys",
+    "verificationNotes": "Warranty listed; confirm specs for SKU",
+    "specifications": {
+      "capacity": "600/750/900 mm",
+      "suction": "Model-specific"
+    }
+  },
+  {
+    "id": "product-21",
+    "category": "kitchen-chimneys",
+    "brand": "Hindware",
+    "model": "Darcia BLDC",
+    "slug": "darcia-bldc",
+    "capacity": "600/750/900 mm",
+    "suction": "Model-specific",
+    "features": [
+      "BLDC",
+      "thermal autoclean",
+      "range features vary by SKU"
+    ],
+    "warranty": "3 years comprehensive + 12 years motor (warranty list)",
+    "sourceUrl": "https://hindware.com/c/kitchen-appliances/bldc-chimneys",
+    "verificationNotes": "Warranty listed; confirm specs for SKU",
+    "specifications": {
+      "capacity": "600/750/900 mm",
+      "suction": "Model-specific"
+    }
+  },
+  {
+    "id": "product-22",
+    "category": "kitchen-chimneys",
+    "brand": "Hindware",
+    "model": "Verita SS BF 2M",
+    "slug": "verita-ss-bf-2m",
+    "capacity": "60 cm",
+    "suction": "750 m³/h",
+    "features": [
+      "Straight-line",
+      "baffle filter",
+      "3 speed levels",
+      "push-button",
+      "2W LED",
+      "no autoclean"
+    ],
+    "warranty": "2 years comprehensive + 5 years motor",
+    "sourceUrl": "https://hindware.com/p/kitchen-appliances/verita-ss-bf-2m",
+    "verificationNotes": "Official product page; compact entry-level model",
+    "specifications": {
+      "capacity": "60 cm",
+      "suction": "750 m³/h"
+    }
+  },
+  {
+    "id": "product-23",
+    "category": "kitchen-chimneys",
+    "brand": "Hindware",
+    "model": "Verita TC Black 2M",
+    "slug": "verita-tc-black-2m",
+    "capacity": "60 cm",
+    "suction": "700 m³/h",
+    "features": [
+      "Straight-line",
+      "baffle filter",
+      "touch control",
+      "3 speed levels",
+      "2W LED",
+      "no autoclean"
+    ],
+    "warranty": "2 years comprehensive + 5 years motor",
+    "sourceUrl": "https://hindware.com/p/kitchen-appliances/verita-tc-black-2m",
+    "verificationNotes": "Official product page; compact entry-level model",
+    "specifications": {
+      "capacity": "60 cm",
+      "suction": "700 m³/h"
+    }
+  }
+]
