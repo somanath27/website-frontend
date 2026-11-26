@@ -21,14 +21,14 @@
       "capacity": "600/750/900 mm",
       "suction": "2000 m³/h"
     },
-    "image": "/assets/images/products/imelda-bldc.jpg"
+    "image": "/assets/images/products/web/imelda-bldc.jpg"
   },
   {
     "id": "product-2",
     "category": "kitchen-chimneys",
     "brand": "Hindware",
     "model": "Cosima BLDC / Cosima Plus",
-    "slug": "cosima-bldc--cosima-plus",
+    "slug": "cosima-bldc-cosima-plus",
     "capacity": "600/750/900 mm",
     "suction": "1600 m³/h",
     "features": [
@@ -47,7 +47,7 @@
       "capacity": "600/750/900 mm",
       "suction": "1600 m³/h"
     },
-    "image": "/assets/images/products/cosima-bldc--cosima-plus.jpg"
+    "image": "/assets/images/products/web/cosima-bldc-cosima-plus.jpg"
   },
   {
     "id": "product-3",
@@ -70,7 +70,7 @@
       "capacity": "Model-specific",
       "suction": "20 L/hr (source listing)"
     },
-    "image": "/assets/images/products/grand-star-example-model.jpg"
+    "image": "/assets/images/products/web/kent-grand-star.jpg"
   },
   {
     "id": "product-4",
@@ -92,7 +92,7 @@
       "capacity": "Model-specific",
       "suction": "Model-specific"
     },
-    "image": "/assets/images/products/supreme-plus-neo-2y.jpg"
+    "image": "/assets/images/products/web/kent-supreme-plus-neo-2y.jpg"
   },
   {
     "id": "product-5",
@@ -114,7 +114,7 @@
       "capacity": "Model-specific",
       "suction": "Model-specific"
     },
-    "image": "/assets/images/products/ace-plus-neo-2y.jpg"
+    "image": "/assets/images/products/web/kent-ace-plus-neo-2y.jpg"
   },
   {
     "id": "product-6",
@@ -136,7 +136,7 @@
       "capacity": "7L",
       "suction": "Model-specific"
     },
-    "image": "/assets/images/products/allura.jpg"
+    "image": "/assets/images/products/web/livpure-allura.jpg"
   },
   {
     "id": "product-7",
@@ -158,7 +158,7 @@
       "capacity": "7L",
       "suction": "Model-specific"
     },
-    "image": "/assets/images/products/allura-premia.jpg"
+    "image": "/assets/images/products/web/livpure-allura-premia.jpg"
   },
   {
     "id": "product-8",
@@ -180,7 +180,7 @@
       "capacity": "Model-specific",
       "suction": "Model-specific"
     },
-    "image": "/assets/images/products/eterna.jpg"
+    "image": "/assets/images/products/web/livpure-eterna.jpg"
   },
   {
     "id": "product-9",
@@ -202,7 +202,7 @@
       "capacity": "Model-specific",
       "suction": "Model-specific"
     },
-    "image": "/assets/images/products/sereno.jpg"
+    "image": "/assets/images/products/web/livpure-sereno.jpg"
   },
   {
     "id": "product-10",
@@ -296,7 +296,7 @@
     "category": "kitchen-chimneys",
     "brand": "Hindware",
     "model": "Raylene BLDC / Autoclean",
-    "slug": "raylene-bldc--autoclean",
+    "slug": "raylene-bldc-autoclean",
     "capacity": "600/750/900 mm",
     "suction": "1700 m³/h",
     "features": [
@@ -313,7 +313,7 @@
       "capacity": "600/750/900 mm",
       "suction": "1700 m³/h"
     },
-    "image": "/assets/images/products/raylene-bldc--autoclean.jpg"
+    "image": "/assets/images/products/web/raylene-bldc-autoclean.jpg"
   },
   {
     "id": "product-15",
@@ -360,7 +360,7 @@
       "capacity": "600/750/900 mm",
       "suction": "Model-specific"
     },
-    "image": "/assets/images/products/divina-bldc.jpg"
+    "image": "/assets/images/products/web/divina-bldc.jpg"
   },
   {
     "id": "product-17",
@@ -385,7 +385,7 @@
       "capacity": "600/750/900 mm",
       "suction": "1550 m³/h (90 cm listing)"
     },
-    "image": "/assets/images/products/florence-autoclean.jpg"
+    "image": "/assets/images/products/web/florence-autoclean.jpg"
   },
   {
     "id": "product-18",
@@ -410,7 +410,7 @@
       "capacity": "90 cm listed",
       "suction": "1800 m³/h"
     },
-    "image": "/assets/images/products/natalia-autoclean-island.jpg"
+    "image": "/assets/images/products/web/natalia-autoclean-island.jpg"
   },
   {
     "id": "product-19",
@@ -435,7 +435,7 @@
       "capacity": "600/750/900 mm",
       "suction": "1700 m³/h (90 cm listing)"
     },
-    "image": "/assets/images/products/serena-plus-grey-bldc.jpg"
+    "image": "/assets/images/products/web/serena-plus-grey-bldc.jpg"
   },
   {
     "id": "product-20",
@@ -457,7 +457,7 @@
       "capacity": "600/750/900 mm",
       "suction": "Model-specific"
     },
-    "image": "/assets/images/products/martina-bldc.jpg"
+    "image": "/assets/images/products/web/martina-bldc.jpg"
   },
   {
     "id": "product-21",
@@ -479,7 +479,7 @@
       "capacity": "600/750/900 mm",
       "suction": "Model-specific"
     },
-    "image": "/assets/images/products/darcia-bldc.jpg"
+    "image": "/assets/images/products/web/darcia-bldc.jpg"
   },
   {
     "id": "product-22",
@@ -504,7 +504,7 @@
       "capacity": "60 cm",
       "suction": "750 m³/h"
     },
-    "image": "/assets/images/products/verita-ss-bf-2m.jpg"
+    "image": "/assets/images/products/web/verita-ss-bf-2m.jpg"
   },
   {
     "id": "product-23",
@@ -529,6 +529,6 @@
       "capacity": "60 cm",
       "suction": "700 m³/h"
     },
-    "image": "/assets/images/products/verita-tc-black-2m.jpg"
+    "image": "/assets/images/products/web/verita-tc-black-2m.jpg"
   }
 ]

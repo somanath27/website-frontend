@@ -1,121 +1,68 @@
-import { Metadata } from 'next';
-import Link from 'next/link';
-import products from '@/data/products.json';
-import { Product } from '@/types/product';
-import ProductCard from '@/components/ProductCard';
-import { BUSINESS_INFO } from '@/data/constants';
-import { Phone, MessageCircle } from 'lucide-react';
+import type { Metadata } from 'next';
+import LocalLanding, { LandingConfig } from '@/components/landing/LocalLanding';
 
 export const metadata: Metadata = {
-  title: 'Buy Water Purifiers in Soro | KENT, Livpure, Kenstar',
-  description: 'Shop water purifiers from KENT, Livpure & Kenstar in Soro. Professional installation & support. Affordable prices with warranty.',
+  title: 'Water Purifiers in Soro, Balasore | KENT, Livpure & Kenstar',
+  description:
+    'Buy KENT, Livpure and Kenstar water purifiers in Soro and Balasore. Installation, repair and service by Saraswati Enterprises.',
 };
 
-export default function WaterPurifiersLandingPage() {
-  const waterPurifiers = (products as Product[]).filter(p => p.category === 'water-purifiers');
+const config: LandingConfig = {
+  eyebrow: 'Water Purifiers in Soro',
+  title: 'KENT, Livpure & Kenstar Water Purifiers in Soro',
+  subtitle:
+    'Compare models, get installation and service support, and enquire about current availability.',
+  heroImage: '/assets/images/products/web/kent-supreme-plus-neo-2y.jpg',
+  heroImageAlt: 'KENT Supreme Plus Neo water purifier',
+  whatsappMessage: 'Hi, I want to buy a water purifier in Soro',
+  serviceType: 'Water purifier sales',
+  primaryLink: {
+    label: 'Compare All Models',
+    href: '/products/water-purifiers',
+  },
+  services: [
+    {
+      title: 'KENT Purifiers',
+      description: 'KENT RO and UV purifiers. Explore models and features.',
+    },
+    {
+      title: 'Livpure Purifiers',
+      description: 'Livpure RO purifiers with multi-stage purification.',
+    },
+    {
+      title: 'Kenstar Purifiers',
+      description: 'Kenstar models available on enquiry.',
+    },
+    {
+      title: 'Installation',
+      description: 'Installation and setup included in our service.',
+    },
+  ],
+  benefits: [
+    'We sell KENT, Livpure and Kenstar',
+    'Call or WhatsApp for current price and availability',
+    'Local installation and after-sales support',
+    'Help choosing the right model',
+  ],
+  faqs: [
+    {
+      question: 'What is the price of a water purifier?',
+      answer:
+        'Prices vary by model and change over time. Call or WhatsApp us for the current price and availability.',
+    },
+    {
+      question: 'Do you deliver to villages near Soro?',
+      answer:
+        'Yes. We serve Soro, Balasore and nearby villages. Contact us to confirm delivery to your area.',
+    },
+    {
+      question: 'Is installation included?',
+      answer:
+        'Installation is available. Please ask us when you enquire so we can confirm the details.',
+    },
+  ],
+};
 
-  return (
-    <main className="w-full mx-auto pt-32 pb-20">
-      {/* Hero */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16 md:py-24">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Quality Water Purifiers in Soro
-          </h1>
-          <p className="text-xl mb-4 text-blue-100">
-            KENT • Livpure • Kenstar - Buy, Install & Service
-          </p>
-          <p className="text-lg mb-8 text-blue-100">
-            Professional installation & lifetime support with genuine spare parts
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href={`tel:${BUSINESS_INFO.phone}`}
-              className="flex items-center justify-center gap-2 bg-white text-blue-600 font-semibold px-8 py-3 rounded-lg hover:bg-blue-50 transition text-lg"
-            >
-              <Phone size={24} />
-              Call
-            </a>
-            <a
-              href={`https://wa.me/${BUSINESS_INFO.whatsapp.replace(/\D/g, '')}?text=Hi, I want to buy a water purifier`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 bg-green-500 text-white font-semibold px-8 py-3 rounded-lg hover:bg-green-600 transition text-lg"
-            >
-              <MessageCircle size={24} />
-              Enquire
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Products */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Our Water Purifiers</h2>
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            {waterPurifiers.slice(0, 3).map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-          <div className="text-center">
-            <Link
-              href="/products/water-purifiers"
-              className="inline-block bg-blue-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-blue-700 transition"
-            >
-              View All Models
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Buy From Us */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Why Choose Us?</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              'Authorized dealer for KENT, Livpure & Kenstar',
-              'Professional installation & setup',
-              'Genuine spare parts with warranty',
-              'Post-sale support & maintenance',
-              'Competitive pricing in Soro',
-              'Free consultation & water testing',
-            ].map((point, idx) => (
-              <div key={idx} className="flex gap-3 items-start bg-blue-50 p-4 rounded-lg">
-                <div className="text-green-500 font-bold text-xl flex-shrink-0">✓</div>
-                <p className="text-gray-700">{point}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Get Your Water Purifier Today</h2>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href={`tel:${BUSINESS_INFO.phone}`}
-              className="flex items-center justify-center gap-2 bg-white text-blue-600 font-semibold px-8 py-3 rounded-lg hover:bg-blue-50 transition"
-            >
-              <Phone size={20} />
-              Call {BUSINESS_INFO.phone}
-            </a>
-            <a
-              href={`https://wa.me/${BUSINESS_INFO.whatsapp.replace(/\D/g, '')}?text=I want to buy a water purifier`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 bg-green-500 text-white font-semibold px-8 py-3 rounded-lg hover:bg-green-600 transition"
-            >
-              <MessageCircle size={20} />
-              Chat Now
-            </a>
-          </div>
-        </div>
-      </section>
-    </main>
-  );
+export default function Page() {
+  return <LocalLanding config={config} />;
 }

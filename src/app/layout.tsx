@@ -5,6 +5,7 @@ import { ReactNode } from 'react';
 import { cn } from '@/utils/helpers';
 import FloatingActions from '@/components/FloatingActions';
 import Script from 'next/script';
+import { generateLocalBusinessSchema } from '@/utils/seo';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -28,11 +29,11 @@ export const metadata: Metadata = {
     title: 'Saraswati Enterprises | Water Purifier Sales & Services',
     description:
       'Get clean, safe drinking water with Saraswati Enterprises. We provide reliable water purifier services in Odisha.',
-    url: 'saraswatienterprises.net.in',
+    url: 'https://www.saraswatienterprises.net.in',
     siteName: 'Saraswati Enterprises',
     images: [
       {
-        url: 'https://yourdomain.com/og-image.jpg',
+        url: 'https://www.saraswatienterprises.net.in/assets/images/products/web/kent-grand-star.jpg',
         width: 1200,
         height: 630,
         alt: 'Saraswati Enterprises Water Purifier',
@@ -49,6 +50,8 @@ export const metadata: Metadata = {
       follow: true,
     },
   },
+  metadataBase: new URL('https://www.saraswatienterprises.net.in'),
+  alternates: { canonical: '/' },
   icons: {
     icon: '/favicon.ico',
   },
@@ -79,9 +82,13 @@ export default function RootLayout({
       <body
         className={cn(
           inter.className,
-          'bg-white text-white min-h-screen m-0 flex place-items-center min-w-[320px]'
+          'bg-white text-white min-h-screen m-0 min-w-[320px]'
         )}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateLocalBusinessSchema()) }}
+        />
         {children}
         <FloatingActions />
       </body>

@@ -4,6 +4,7 @@ import FloatingCTA from '@/components/FloatingCTA';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import products from '@/data/products.json';
+import getPhotoProducts from '@/utils/products';
 import { Product } from '@/types/product';
 import ProductCard from '@/components/ProductCard';
 import { BUSINESS_INFO } from '@/data/constants';
@@ -11,26 +12,33 @@ import { Phone, MessageCircle, Wrench, TrendingUp, MapPin } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Saraswati Enterprises | Water Purifiers & Kitchen Chimneys in Soro',
-  description: 'Saraswati Enterprises offers water purifier sales, installation & RO repair services in Soro, Balasore & nearby villages. KENT, Livpure, Kenstar, Hindware chimneys.',
-  keywords: 'RO service Soro, water purifier Balasore, kitchen chimney, RO repair, Hindware',
+  description:
+    'Saraswati Enterprises offers water purifier sales, installation & RO repair services in Soro, Balasore & nearby villages. KENT, Livpure, Kenstar, Hindware chimneys.',
+  keywords:
+    'RO service Soro, water purifier Balasore, kitchen chimney, RO repair, Hindware',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://www.saraswatienterprises.net.in',
     title: 'Saraswati Enterprises | Water Purifiers & Services in Soro',
-    description: 'Professional water purifier sales, installation & repair services in Soro & Balasore',
+    description:
+      'Professional water purifier sales, installation & repair services in Soro & Balasore',
   },
 };
 
 export default function HomePage() {
-  const allProducts = products as Product[];
-  const waterPurifiers = allProducts.filter(p => p.category === 'water-purifiers').slice(0, 3);
-  const chimneys = allProducts.filter(p => p.category === 'kitchen-chimneys').slice(0, 3);
+  const allProducts = getPhotoProducts(products as Product[]);
+  const waterPurifiers = allProducts
+    .filter((p) => p.category === 'water-purifiers')
+    .slice(0, 3);
+  const chimneys = allProducts
+    .filter((p) => p.category === 'kitchen-chimneys')
+    .slice(0, 3);
 
   return (
     <main className="w-full mx-auto">
       <AnnouncementBar />
-      
+
       {/* Hero Carousel */}
       <Carousel />
 
@@ -42,13 +50,14 @@ export default function HomePage() {
               Explore Water Purifiers for Your Home
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Explore water purifiers from trusted brands and get professional guidance, installation & support
+              Explore water purifiers from trusted brands and get professional
+              guidance, installation & support
             </p>
           </div>
 
           {/* Featured Products */}
           <div className="grid md:grid-cols-3 gap-6 mb-8">
-            {waterPurifiers.map(product => (
+            {waterPurifiers.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
@@ -73,13 +82,14 @@ export default function HomePage() {
               Modern Kitchen Chimneys for a Better Cooking Experience
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Discover stylish Hindware kitchen chimneys with modern design, powerful suction & convenient cleaning
+              Discover stylish Hindware kitchen chimneys with modern design,
+              powerful suction & convenient cleaning
             </p>
           </div>
 
           {/* Featured Chimneys */}
           <div className="grid md:grid-cols-3 gap-6 mb-8">
-            {chimneys.map(product => (
+            {chimneys.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
@@ -104,22 +114,44 @@ export default function HomePage() {
               Professional RO Installation & Repair Services
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Installation, repair, maintenance & filter replacement with doorstep service in Soro & nearby villages
+              Installation, repair, maintenance & filter replacement with
+              doorstep service in Soro & nearby villages
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {[
-              { icon: Wrench, title: 'RO Installation', desc: 'Professional setup & configuration' },
-              { icon: TrendingUp, title: 'RO Repair', desc: 'Expert troubleshooting & fixing' },
-              { icon: Wrench, title: 'Filter Replacement', desc: 'Genuine spare parts available' },
-              { icon: TrendingUp, title: 'Regular Maintenance', desc: 'Performance checks & cleaning' },
-            ].map((service, idx) => {
+              {
+                icon: Wrench,
+                title: 'RO Installation',
+                desc: 'Professional setup & configuration',
+              },
+              {
+                icon: TrendingUp,
+                title: 'RO Repair',
+                desc: 'Expert troubleshooting & fixing',
+              },
+              {
+                icon: Wrench,
+                title: 'Filter Replacement',
+                desc: 'Genuine spare parts available',
+              },
+              {
+                icon: TrendingUp,
+                title: 'Regular Maintenance',
+                desc: 'Performance checks & cleaning',
+              },
+            ].map((service) => {
               const Icon = service.icon;
               return (
-                <div key={idx} className="bg-blue-50 p-6 rounded-lg text-center border border-blue-100">
+                <div
+                  key={service.title}
+                  className="bg-blue-50 p-6 rounded-lg text-center border border-blue-100"
+                >
                   <Icon size={40} className="text-blue-600 mx-auto mb-4" />
-                  <h3 className="font-semibold text-gray-900 mb-2">{service.title}</h3>
+                  <h3 className="font-semibold text-gray-900 mb-2">
+                    {service.title}
+                  </h3>
                   <p className="text-sm text-gray-600 mb-4">{service.desc}</p>
                   <a
                     href={`https://wa.me/${BUSINESS_INFO.whatsapp.replace(/\D/g, '')}?text=Hi, I'm interested in ${service.title}`}
@@ -153,18 +185,33 @@ export default function HomePage() {
               Kitchen Chimney Installation & Maintenance
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Professional installation, cleaning, maintenance & repair services for Hindware chimneys
+              Professional installation, cleaning, maintenance & repair services
+              for Hindware chimneys
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             {[
-              { title: 'Chimney Installation', desc: 'Professional installation with warranty support' },
-              { title: 'Chimney Cleaning', desc: 'Deep cleaning & maintenance of filters & ducts' },
-              { title: 'Chimney Repair', desc: 'Quick repair & troubleshooting services' },
-            ].map((service, idx) => (
-              <div key={idx} className="bg-white p-6 rounded-lg shadow-md border-t-4 border-blue-600">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{service.title}</h3>
+              {
+                title: 'Chimney Installation',
+                desc: 'Professional installation with warranty support',
+              },
+              {
+                title: 'Chimney Cleaning',
+                desc: 'Deep cleaning & maintenance of filters & ducts',
+              },
+              {
+                title: 'Chimney Repair',
+                desc: 'Quick repair & troubleshooting services',
+              },
+            ].map((service) => (
+              <div
+                key={service.title}
+                className="bg-white p-6 rounded-lg shadow-md border-t-4 border-blue-600"
+              >
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  {service.title}
+                </h3>
                 <p className="text-gray-600 mb-4">{service.desc}</p>
                 <a
                   href={`https://wa.me/${BUSINESS_INFO.whatsapp.replace(/\D/g, '')}?text=Hi, I'm interested in ${service.title}`}
@@ -188,19 +235,34 @@ export default function HomePage() {
               Serving Soro, Balasore & Nearby Villages
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Reliable doorstep services across Soro town, surrounding rural areas & villages in Balasore district
+              Reliable doorstep services across Soro town, surrounding rural
+              areas & villages in Balasore district
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { title: 'Soro Town', desc: 'Full service coverage in Soro city' },
-              { title: 'Nearby Villages', desc: 'Service coverage in surrounding rural areas' },
-              { title: 'Balasore District', desc: 'Extended service areas throughout district' },
-            ].map((area, idx) => (
-              <div key={idx} className="bg-blue-50 p-6 rounded-lg text-center border border-blue-200">
+              {
+                title: 'Soro Town',
+                desc: 'Full service coverage in Soro city',
+              },
+              {
+                title: 'Nearby Villages',
+                desc: 'Service coverage in surrounding rural areas',
+              },
+              {
+                title: 'Balasore District',
+                desc: 'Extended service areas throughout district',
+              },
+            ].map((area) => (
+              <div
+                key={area.title}
+                className="bg-blue-50 p-6 rounded-lg text-center border border-blue-200"
+              >
                 <MapPin size={40} className="text-blue-600 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{area.title}</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  {area.title}
+                </h3>
                 <p className="text-gray-600 text-sm mb-4">{area.desc}</p>
                 <a
                   href={`tel:${BUSINESS_INFO.phone}`}
@@ -227,31 +289,33 @@ export default function HomePage() {
             {[
               {
                 q: 'Do you provide RO service in Soro?',
-                a: 'Yes, we provide comprehensive RO services including installation, repair, maintenance & filter replacement in Soro town & nearby areas.'
+                a: 'Yes, we provide comprehensive RO services including installation, repair, maintenance & filter replacement in Soro town & nearby areas.',
               },
               {
                 q: 'Do you serve nearby villages?',
-                a: 'Yes, we provide doorstep services across villages & rural areas surrounding Soro in the Balasore district.'
+                a: 'Yes, we provide doorstep services across villages & rural areas surrounding Soro in the Balasore district.',
               },
               {
                 q: 'Which water purifier brands do you sell?',
-                a: 'We sell KENT, Livpure, and Kenstar water purifiers with professional installation & after-sales support.'
+                a: 'We sell KENT, Livpure, and Kenstar water purifiers with professional installation & after-sales support.',
               },
               {
                 q: 'Do you sell Hindware kitchen chimneys?',
-                a: 'Yes, we offer a range of Hindware kitchen chimneys with various sizes & features, including installation services.'
+                a: 'Yes, we offer a range of Hindware kitchen chimneys with various sizes & features, including installation services.',
               },
               {
                 q: 'How can I book RO servicing?',
-                a: 'You can call us at +91 94392 63319, message on WhatsApp, or fill the booking form on our website.'
+                a: 'You can call us at +91 94392 63319, message on WhatsApp, or fill the booking form on our website.',
               },
               {
                 q: 'What is your service response time?',
-                a: 'We aim to respond to all inquiries within 2-4 hours during business hours for fast service booking & assistance.'
+                a: 'We aim to respond to all inquiries within 2-4 hours during business hours for fast service booking & assistance.',
               },
-            ].map((faq, idx) => (
-              <div key={idx} className="bg-white p-6 rounded-lg shadow-md">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{faq.q}</h3>
+            ].map((faq) => (
+              <div key={faq.q} className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  {faq.q}
+                </h3>
                 <p className="text-gray-600">{faq.a}</p>
               </div>
             ))}
@@ -266,7 +330,8 @@ export default function HomePage() {
             Ready to Upgrade Your Home?
           </h2>
           <p className="text-lg mb-8 text-blue-100">
-            Contact Saraswati Enterprises for water purifiers, kitchen chimneys & professional services
+            Contact Saraswati Enterprises for water purifiers, kitchen chimneys
+            & professional services
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

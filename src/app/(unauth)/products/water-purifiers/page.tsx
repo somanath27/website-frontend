@@ -1,104 +1,63 @@
-'use client';
-
-import { useState } from 'react';
+import type { Metadata } from 'next';
 import products from '@/data/products.json';
-import ProductCard from '@/components/ProductCard';
+import getPhotoProducts from '@/utils/products';
+import ProductListing from '@/components/ProductListing';
 import { Product } from '@/types/product';
-import { BRANDS } from '@/data/constants';
+import { BRANDS, BUSINESS_INFO } from '@/data/constants';
+import { MessageCircle, Phone } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title:
+    'Water Purifiers in Soro, Balasore | KENT, Livpure, Kenstar | Saraswati Enterprises',
+  description:
+    'Browse KENT, Livpure and Kenstar water purifiers in Soro and Balasore. Installation, repair and maintenance in nearby villages.',
+};
 
 export default function WaterPurifiersPage() {
-  const waterPurifiers = (products as Product[]).filter(
+  const waterPurifiers = getPhotoProducts(products as Product[]).filter(
     (p) => p.category === 'water-purifiers'
   );
-
-  const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const filteredProducts = waterPurifiers.filter((p) => {
-    const matchesBrand = !selectedBrand || p.brand === selectedBrand;
-    const matchesSearch =
-      p.model.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      p.brand.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesBrand && matchesSearch;
-  });
+  const whatsapp = `https://wa.me/${BUSINESS_INFO.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent("Hello, I'd like help choosing a water purifier")}`;
 
   return (
-    <main className="min-h-screen bg-gray-50 pt-32 pb-20">
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Explore Water Purifiers for Your Home
-          </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Explore water purifiers from trusted brands like KENT, Livpure, and Kenstar. 
-            Get professional installation, consultation, and repair services in Soro & Balasore.
+    <main className="min-h-screen bg-gray-50 pb-20">
+      <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-600 pt-36 pb-16 text-white">
+        <div className="mx-auto max-w-7xl px-4">
+          <p className="text-sm font-semibold uppercase tracking-widest text-blue-100">
+            Water Purifiers
           </p>
-        </div>
-
-        {/* Filters */}
-        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Search */}
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Search Products
-              </label>
-              <input
-                type="text"
-                placeholder="Search by model or brand..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-
-            {/* Brand Filter */}
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Filter by Brand
-              </label>
-              <div className="flex flex-wrap gap-2">
-                <button
-                  onClick={() => setSelectedBrand(null)}
-                  className={`px-4 py-2 rounded-lg font-medium transition ${
-                    selectedBrand === null
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                  }`}
-                >
-                  All Brands
-                </button>
-                {BRANDS['water-purifiers'].map((brand) => (
-                  <button
-                    key={brand}
-                    onClick={() => setSelectedBrand(brand)}
-                    className={`px-4 py-2 rounded-lg font-medium transition ${
-                      selectedBrand === brand
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                    }`}
-                  >
-                    {brand}
-                  </button>
-                ))}
-              </div>
-            </div>
+          <h1 className="mt-3 max-w-3xl text-3xl font-extrabold md:text-5xl">
+            Find the right water purifier for your home
+          </h1>
+          <p className="mt-4 max-w-2xl text-lg text-blue-100">
+            KENT, Livpure and Kenstar purifiers, with installation, repair and
+            maintenance across Soro, Balasore and nearby villages.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href={whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg bg-green-500 px-5 py-3 font-semibold text-white hover:bg-green-600"
+            >
+              <MessageCircle size={18} /> Enquire on WhatsApp
+            </a>
+            <a
+              href={`tel:${BUSINESS_INFO.phone}`}
+              className="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 font-semibold text-blue-700 hover:bg-blue-50"
+            >
+              <Phone size={18} /> Call {BUSINESS_INFO.phone}
+            </a>
           </div>
         </div>
+      </section>
 
-        {/* Products Grid */}
-        {filteredProducts.length > 0 ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-12">
-            <p className="text-lg text-gray-600">No products found matching your criteria.</p>
-          </div>
-        )}
+      <div className="mx-auto max-w-7xl px-4 pt-10">
+        <ProductListing
+          products={waterPurifiers}
+          brands={BRANDS['water-purifiers']}
+          searchPlaceholder="Search by model, brand or feature..."
+        />
       </div>
     </main>
   );

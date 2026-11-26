@@ -1,160 +1,219 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import generateKey from '@/utils/generateKey';
+import { CheckCircle2, MessageCircle, Phone } from 'lucide-react';
 import { BUSINESS_INFO } from '@/data/constants';
+
+const whatsappUrl = (text: string) => {
+  const number = BUSINESS_INFO.whatsapp.replace(/\D/g, '');
+  return `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
+};
 
 const slides = [
   {
-    desktopImage: '/assets/images/water-banner.jpg',
-    mobileImage: '/assets/images/banner-mobile.webp',
+    image: '/assets/images/products/web/kent-grand-star.jpg',
+    alt: 'KENT Grand Star water purifier',
+    eyebrow: 'KENT · Livpure · Kenstar',
     title: 'Find the Right Water Purifier for Your Home',
-    subtitle: 'Explore trusted brands: KENT, Livpure, Kenstar',
-    description: 'Professional guidance, installation & lifetime support in Soro & nearby villages',
-    ctaPrimary: { text: 'Explore Water Purifiers', href: '/products/water-purifiers' },
-    ctaSecondary: { text: 'Enquire on WhatsApp', href: `https://wa.me/${BUSINESS_INFO.whatsapp.replace(/\D/g, '')}?text=Hi, I'm interested in water purifiers` },
+    points: [
+      'Sales & support in Soro & Balasore',
+      'Installation & lifetime support',
+      'Quality spare parts',
+    ],
+    ctaPrimary: {
+      text: 'Explore Water Purifiers',
+      href: '/products/water-purifiers',
+    },
+    ctaSecondary: {
+      text: 'WhatsApp Us',
+      href: whatsappUrl("Hi, I'm interested in water purifiers"),
+    },
   },
   {
-    desktopImage: '/assets/images/softner-banner.jpg',
-    mobileImage: '/assets/images/banner-mobile-2.webp',
-    title: 'Modern Kitchen Chimneys',
-    subtitle: 'Hindware chimneys for superior air quality',
-    description: 'Professional installation & maintenance services across Soro & Balasore',
-    ctaPrimary: { text: 'Explore Chimneys', href: '/products/kitchen-chimneys' },
-    ctaSecondary: { text: 'Get Free Consultation', href: `https://wa.me/${BUSINESS_INFO.whatsapp.replace(/\D/g, '')}?text=Hi, I'm interested in kitchen chimneys` },
+    image: '/assets/images/products/web/hindware-bldc-chimneys.jpg',
+    alt: 'Hindware kitchen chimneys',
+    eyebrow: 'Hindware Kitchen Chimneys',
+    title: 'A Smoke-Free Kitchen, Every Day',
+    points: [
+      'BLDC motors with low power use',
+      'Auto-clean and filter-friendly models',
+      'Installation & cleaning in Soro',
+    ],
+    ctaPrimary: {
+      text: 'Explore Chimneys',
+      href: '/products/kitchen-chimneys',
+    },
+    ctaSecondary: {
+      text: 'Get a Free Consultation',
+      href: whatsappUrl("Hi, I'm interested in kitchen chimneys"),
+    },
   },
   {
-    desktopImage: '/assets/images/banner6.webp',
-    mobileImage: '/assets/images/banner-mobile-3.webp',
+    image: '/assets/images/products/web/kent-ro-water-purifiers.jpg',
+    alt: 'RO water purifier installation and service',
+    eyebrow: 'RO Service & Repair',
     title: 'Reliable RO Service at Your Doorstep',
-    subtitle: 'Installation, repair & maintenance in Soro & nearby villages',
-    description: 'Fast response | Expert technicians | Quality spare parts',
+    points: [
+      'Installation, repair & AMC',
+      'Serving Soro & nearby villages',
+      'Quick response from local technicians',
+    ],
     ctaPrimary: { text: 'Book RO Service', href: '/ro-service-soro' },
-    ctaSecondary: { text: 'Call Now', href: `tel:${BUSINESS_INFO.phone}` },
-  },
-  {
-    desktopImage: '/assets/images/water-banner.jpg',
-    mobileImage: '/assets/images/banner-mobile.webp',
-    title: 'Serving Soro, Balasore & Nearby Villages',
-    subtitle: 'Local business | Doorstep service | 15+ years experience',
-    description: 'Your trusted partner for water purifiers, chimneys & service needs',
-    ctaPrimary: { text: 'Learn More', href: '/about' },
-    ctaSecondary: { text: 'Contact Us', href: '/contact' },
+    ctaSecondary: {
+      text: `Call ${BUSINESS_INFO.phone}`,
+      href: `tel:${BUSINESS_INFO.phone}`,
+    },
   },
 ];
 
+const AUTOPLAY_MS = 6000;
+
+function SlideButton({
+  href,
+  text,
+  primary,
+}: {
+  href: string;
+  text: string;
+  primary: boolean;
+}) {
+  const base = `inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 font-semibold transition ${
+    primary
+      ? 'bg-blue-600 text-white shadow-lg hover:bg-blue-700'
+      : 'border-2 border-blue-600 text-blue-700 hover:bg-blue-50'
+  }`;
+  if (href.startsWith('http') || href.startsWith('tel:')) {
+    const external = href.startsWith('http');
+    return (
+      <a
+        href={href}
+        className={base}
+        target={external ? '_blank' : undefined}
+        rel={external ? 'noopener noreferrer' : undefined}
+      >
+        {text}
+      </a>
+    );
+  }
+  return (
+    <Link href={href} className={base}>
+      {text}
+    </Link>
+  );
+}
+
 export default function Carousel() {
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 800,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    arrows: false,
-    pauseOnHover: true,
-  };
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused) return undefined;
+    const timer = setInterval(() => {
+      setActive((i) => (i + 1) % slides.length);
+    }, AUTOPLAY_MS);
+    return () => clearInterval(timer);
+  }, [paused]);
 
   return (
-    <div className="w-full">
-      <Slider
-        dots={settings.dots}
-        infinite={settings.infinite}
-        speed={settings.speed}
-        slidesToShow={settings.slidesToShow}
-        slidesToScroll={settings.slidesToScroll}
-        autoplay={settings.autoplay}
-        autoplaySpeed={settings.autoplaySpeed}
-        arrows={settings.arrows}
-        pauseOnHover={settings.pauseOnHover}
-      >
-        {slides.map((slide) => (
-          <div key={generateKey()} className="relative">
-            <div className="w-full mt-16 h-[400px] sm:h-[500px] md:h-[600px] lg:h-[500px] relative">
-              {/* Mobile Image */}
-              <div className="block sm:hidden">
-                <Image
-                  src={slide.mobileImage}
-                  alt={slide.title}
-                  fill
-                  priority
-                  className="object-cover"
-                />
+    <section
+      className="relative mt-16 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {/* All slides share one grid cell so the section height fits the tallest slide */}
+      <div className="grid">
+        {slides.map((slide, index) => (
+          <div
+            key={slide.title}
+            aria-hidden={index !== active}
+            className={`col-start-1 row-start-1 min-w-0 transition-opacity duration-700 ${
+              index === active ? 'opacity-100' : 'pointer-events-none opacity-0'
+            }`}
+          >
+            <div className="mx-auto grid w-full max-w-7xl min-w-0 items-center gap-8 px-4 pb-16 pt-10 md:grid-cols-2 md:pt-16 lg:gap-12">
+              <div className="order-2 min-w-0 space-y-5 md:order-1">
+                <p className="text-sm font-semibold uppercase tracking-widest text-blue-600">
+                  {slide.eyebrow}
+                </p>
+                <h1 className="text-3xl font-extrabold leading-tight text-gray-900 sm:text-4xl lg:text-5xl">
+                  {slide.title}
+                </h1>
+                <ul className="space-y-2">
+                  {slide.points.map((p) => (
+                    <li
+                      key={p}
+                      className="flex items-center gap-2 text-gray-700"
+                    >
+                      <CheckCircle2
+                        size={18}
+                        className="shrink-0 text-green-600"
+                      />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+                <div className="flex flex-col gap-3 pt-2 sm:flex-row">
+                  <SlideButton
+                    href={slide.ctaPrimary.href}
+                    text={slide.ctaPrimary.text}
+                    primary
+                  />
+                  <SlideButton
+                    href={slide.ctaSecondary.href}
+                    text={slide.ctaSecondary.text}
+                    primary={false}
+                  />
+                </div>
+                <div className="flex flex-wrap gap-4 pt-2 text-sm text-gray-600">
+                  <a
+                    href={`tel:${BUSINESS_INFO.phone}`}
+                    className="inline-flex items-center gap-1 hover:text-blue-600"
+                  >
+                    <Phone size={16} /> {BUSINESS_INFO.phone}
+                  </a>
+                  <a
+                    href={whatsappUrl('Hello, I need help')}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 hover:text-green-600"
+                  >
+                    <MessageCircle size={16} /> WhatsApp
+                  </a>
+                </div>
               </div>
 
-              {/* Desktop Image */}
-              <div className="hidden sm:block">
-                <Image
-                  src={slide.desktopImage}
-                  alt={slide.title}
-                  fill
-                  priority
-                  className="object-cover"
-                />
-              </div>
-
-              {/* Overlay & Content */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center">
-                <div className="max-w-2xl pl-6 sm:pl-12 text-white space-y-4">
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
-                    {slide.title}
-                  </h2>
-                  <p className="text-base sm:text-lg font-semibold">
-                    {slide.subtitle}
-                  </p>
-                  <p className="text-sm sm:text-base text-gray-200 max-w-xl">
-                    {slide.description}
-                  </p>
-
-                  {/* CTAs */}
-                  <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                    {slide.ctaPrimary.href.startsWith('http') || slide.ctaPrimary.href.startsWith('tel:') ? (
-                      <a
-                        href={slide.ctaPrimary.href}
-                        target={slide.ctaPrimary.href.startsWith('http') ? '_blank' : undefined}
-                        rel={slide.ctaPrimary.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition inline-block text-center max-w-fit"
-                      >
-                        {slide.ctaPrimary.text}
-                      </a>
-                    ) : (
-                      <Link
-                        href={slide.ctaPrimary.href}
-                        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition inline-block text-center max-w-fit"
-                      >
-                        {slide.ctaPrimary.text}
-                      </Link>
-                    )}
-
-                    {slide.ctaSecondary.href.startsWith('http') || slide.ctaSecondary.href.startsWith('tel:') ? (
-                      <a
-                        href={slide.ctaSecondary.href}
-                        target={slide.ctaSecondary.href.startsWith('http') ? '_blank' : undefined}
-                        rel={slide.ctaSecondary.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                        className="border-2 border-white hover:bg-white/10 text-white font-semibold py-2 px-6 rounded-lg transition inline-block text-center max-w-fit"
-                      >
-                        {slide.ctaSecondary.text}
-                      </a>
-                    ) : (
-                      <Link
-                        href={slide.ctaSecondary.href}
-                        className="border-2 border-white hover:bg-white/10 text-white font-semibold py-2 px-6 rounded-lg transition inline-block text-center max-w-fit"
-                      >
-                        {slide.ctaSecondary.text}
-                      </Link>
-                    )}
-                  </div>
+              <div className="order-1 min-w-0 md:order-2">
+                <div className="relative mx-auto aspect-[4/3] w-full max-w-lg overflow-hidden rounded-3xl bg-white shadow-xl ring-1 ring-blue-100">
+                  <Image
+                    src={slide.image}
+                    alt={slide.alt}
+                    fill
+                    priority={index === 0}
+                    sizes="(max-width: 768px) 90vw, 50vw"
+                    className="object-contain p-6"
+                  />
                 </div>
               </div>
             </div>
           </div>
         ))}
-      </Slider>
-    </div>
+      </div>
+
+      <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+        {slides.map((slide, index) => (
+          <button
+            key={slide.title}
+            type="button"
+            aria-label={`Show slide ${index + 1}`}
+            onClick={() => setActive(index)}
+            className={`h-2.5 w-2.5 rounded-full transition ${
+              index === active ? 'bg-blue-600' : 'bg-blue-300 hover:bg-blue-400'
+            }`}
+          />
+        ))}
+      </div>
+    </section>
   );
 }

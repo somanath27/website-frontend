@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import products from '@/data/products.json';
+import getPhotoProducts from '@/utils/products';
 import { Product } from '@/types/product';
 import { BUSINESS_INFO } from '@/data/constants';
 import { generateProductSchema, generateBreadcrumbSchema } from '@/utils/seo';
@@ -15,7 +16,7 @@ interface ProductPageProps {
 
 export async function generateMetadata({ params }: ProductPageProps) {
   const resolvedParams = await params;
-  const product = (products as Product[]).find(
+  const product = getPhotoProducts(products as Product[]).find(
     (p) => p.slug === resolvedParams.slug && p.category === 'water-purifiers'
   );
 
@@ -39,26 +40,27 @@ export async function generateMetadata({ params }: ProductPageProps) {
 }
 
 export async function generateStaticParams() {
-  const waterPurifiers = (products as Product[]).filter(
+  const waterPurifiers = getPhotoProducts(products as Product[]).filter(
     (p) => p.category === 'water-purifiers'
   );
   return waterPurifiers.map((p) => ({ slug: p.slug }));
 }
 
 function getRelatedProducts(product: Product, count: number = 3) {
-  return (products as Product[])
-    .filter(
-      (p) =>
-        p.category === product.category &&
-        p.id !== product.id &&
-        p.brand === product.brand
-    )
+  const isRelated = (p: Product) => {
+    const sameCategory = p.category === product.category;
+    const differentItem = p.id !== product.id;
+    const sameBrand = p.brand === product.brand;
+    return sameCategory && differentItem && sameBrand;
+  };
+  return getPhotoProducts(products as Product[])
+    .filter(isRelated)
     .slice(0, count);
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const resolvedParams = await params;
-  const product = (products as Product[]).find(
+  const product = getPhotoProducts(products as Product[]).find(
     (p) => p.slug === resolvedParams.slug && p.category === 'water-purifiers'
   );
 
@@ -99,14 +101,19 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <nav className="mb-8">
             <ol className="flex gap-2 text-sm text-gray-600 flex-wrap">
               {breadcrumbs.map((crumb, i) => (
-                <li key={i} className="flex items-center gap-2">
+                <li key={crumb.name} className="flex items-center gap-2">
                   {i > 0 && <span className="text-gray-400">/</span>}
                   {crumb.url ? (
-                    <Link href={crumb.url} className="text-blue-600 hover:underline">
+                    <Link
+                      href={crumb.url}
+                      className="text-blue-600 hover:underline"
+                    >
                       {crumb.name}
                     </Link>
                   ) : (
-                    <span className="text-gray-900 font-medium">{crumb.name}</span>
+                    <span className="text-gray-900 font-medium">
+                      {crumb.name}
+                    </span>
                   )}
                 </li>
               ))}
@@ -193,8 +200,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     Key Features
                   </h2>
                   <ul className="space-y-2">
-                    {product.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-3">
+                    {product.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-3">
                         <span className="text-green-600 mt-1">✓</span>
                         <span className="text-gray-700">{feature}</span>
                       </li>
@@ -227,13 +234,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 About This Product
               </h2>
               <p className="text-gray-700 leading-relaxed mb-4">
-                The {product.model} from {product.brand} is a high-quality water purification
-                system designed to meet the needs of modern households. With a capacity of{' '}
-                {product.capacity}, it delivers clean, safe drinking water for your family.
+                The {product.model} from {product.brand} is a high-quality water
+                purification system designed to meet the needs of modern
+                households. With a capacity of {product.capacity}, it delivers
+                clean, safe drinking water for your family.
               </p>
               <p className="text-gray-700 leading-relaxed">
-                Our team at Saraswati Enterprises provides professional installation, maintenance,
-                and repair services for this product in Soro, Balasore, and nearby villages.
+                Our team at Saraswati Enterprises provides professional
+                installation, maintenance, and repair services for this product
+                in Soro, Balasore, and nearby villages.
               </p>
             </div>
 
@@ -246,29 +255,43 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 <li className="flex items-start gap-3">
                   <span className="text-blue-600 mt-1">●</span>
                   <div>
-                    <p className="font-medium text-gray-900">Professional Installation</p>
-                    <p className="text-sm text-gray-600">Expert setup and testing</p>
+                    <p className="font-medium text-gray-900">
+                      Professional Installation
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Expert setup and testing
+                    </p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-blue-600 mt-1">●</span>
                   <div>
-                    <p className="font-medium text-gray-900">Regular Maintenance</p>
-                    <p className="text-sm text-gray-600">Filter replacement & cleaning</p>
+                    <p className="font-medium text-gray-900">
+                      Regular Maintenance
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Filter replacement & cleaning
+                    </p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-blue-600 mt-1">●</span>
                   <div>
-                    <p className="font-medium text-gray-900">Repair & Troubleshooting</p>
-                    <p className="text-sm text-gray-600">Fast doorstep service</p>
+                    <p className="font-medium text-gray-900">
+                      Repair & Troubleshooting
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Fast doorstep service
+                    </p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-blue-600 mt-1">●</span>
                   <div>
                     <p className="font-medium text-gray-900">Spare Parts</p>
-                    <p className="text-sm text-gray-600">Genuine components available</p>
+                    <p className="text-sm text-gray-600">
+                      Genuine components available
+                    </p>
                   </div>
                 </li>
               </ul>
@@ -335,8 +358,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   What is the warranty period?
                 </h3>
                 <p className="text-gray-700">
-                  Warranty details vary by product and purchase date. Contact us for
-                  verification of your specific unit's warranty coverage.
+                  Warranty details vary by product and purchase date. Contact us
+                  for verification of your specific unit&apos;s warranty
+                  coverage.
                 </p>
               </div>
               <div>
@@ -344,8 +368,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   Do you provide installation service?
                 </h3>
                 <p className="text-gray-700">
-                  Yes! We provide professional installation at your doorstep in Soro,
-                  Balasore, and nearby villages. Enquire for details and scheduling.
+                  Yes! We provide professional installation at your doorstep in
+                  Soro, Balasore, and nearby villages. Enquire for details and
+                  scheduling.
                 </p>
               </div>
               <div>
@@ -353,9 +378,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   How often should filters be replaced?
                 </h3>
                 <p className="text-gray-700">
-                  Filter replacement frequency depends on water quality and usage.
-                  Typically every 6-12 months. Our team will guide you on the best
-                  maintenance schedule.
+                  Filter replacement frequency depends on water quality and
+                  usage. Typically every 6-12 months. Our team will guide you on
+                  the best maintenance schedule.
                 </p>
               </div>
               <div>
@@ -363,8 +388,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   Is doorstep service available in my area?
                 </h3>
                 <p className="text-gray-700">
-                  We serve Soro town, nearby areas, villages, and surrounding regions in
-                  Balasore. Contact us with your location to confirm availability.
+                  We serve Soro town, nearby areas, villages, and surrounding
+                  regions in Balasore. Contact us with your location to confirm
+                  availability.
                 </p>
               </div>
             </div>
@@ -372,11 +398,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
           {/* Contact CTA */}
           <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg p-8 text-white text-center">
-            <h2 className="text-3xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
+            <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
             <p className="text-lg mb-6 opacity-90">
-              Contact Saraswati Enterprises for installation, pricing, and service inquiries
+              Contact Saraswati Enterprises for installation, pricing, and
+              service inquiries
             </p>
             <ProductDetailsCTA
               whatsappUrl={`https://wa.me/${BUSINESS_INFO.whatsappRaw}?text=${encodeURIComponent(

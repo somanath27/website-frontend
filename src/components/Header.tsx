@@ -1,11 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { Menu, X, PhoneCallIcon, MessageCircle } from 'lucide-react';
 import Image from 'next/image';
-import CustomMarquee from './CustomMarquee';
 import { BUSINESS_INFO } from '@/data/constants';
+import CustomMarquee from './CustomMarquee';
 
 const navLinks = [
   { name: 'Home', href: '/' },
@@ -18,13 +19,27 @@ const navLinks = [
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMenuOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [menuOpen]);
 
   return (
     <>
       {/* 👇 Marquee Added */}
       <CustomMarquee />
 
-      <header className="fixed inset-x-0 top-8 z-50 h-16 bg-gradient-to-r from-white via-white to-gray-100 shadow">
+      <header className="fixed inset-x-0 top-8 z-50 h-16 bg-white shadow-md backdrop-blur-sm">
         <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-4">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
@@ -38,12 +53,12 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6 font-medium text-sm">
+          <nav className="hidden lg:flex items-center gap-8 font-medium text-sm">
             {navLinks.map(({ name, href }) => (
               <Link
                 key={name}
                 href={href}
-                className="text-[#101010] transition hover:text-blue-500"
+                className="text-gray-700 transition hover:text-blue-600"
               >
                 {name}
               </Link>
@@ -72,7 +87,7 @@ export default function Header() {
             </a>
             <Link
               href="/booking"
-              className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition"
+              className="rounded-lg bg-blue-600 px-5 py-2 text-sm font-bold text-white shadow-md hover:bg-blue-700 hover:shadow-lg transition"
             >
               Book Now
             </Link>
@@ -91,47 +106,42 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {menuOpen && (
-          <div className="lg:hidden space-y-4 bg-gradient-to-b from-blue-600 to-indigo-600 px-6 py-6 max-h-96 overflow-y-auto">
-            {navLinks.map(({ name, href }) => (
-              <Link
-                key={name}
-                href={href}
-                onClick={() => setMenuOpen(false)}
-                className="block text-base font-medium text-white transition hover:text-yellow-300"
-              >
-                {name}
-              </Link>
-            ))}
+          <div className="lg:hidden absolute inset-x-0 top-16 max-h-[calc(100vh-4rem-2rem)] overflow-y-auto border-t border-gray-100 bg-white px-5 pb-6 pt-4 shadow-xl">
+            <nav className="flex flex-col divide-y divide-gray-100">
+              {navLinks.map(({ name, href }) => (
+                <Link
+                  key={name}
+                  href={href}
+                  onClick={() => setMenuOpen(false)}
+                  className="py-3 text-base font-medium text-gray-800 transition hover:text-blue-600"
+                >
+                  {name}
+                </Link>
+              ))}
+            </nav>
 
-            {/* Mobile Phone */}
-            <div className="mt-4 pt-4 border-t border-white/20">
-              <a 
+            <div className="mt-5 grid grid-cols-2 gap-3">
+              <a
                 href={`tel:${BUSINESS_INFO.phone}`}
-                className="flex items-center gap-2 text-white font-medium text-base hover:underline"
+                className="flex items-center justify-center gap-2 rounded-lg border border-blue-600 px-3 py-2.5 text-sm font-semibold text-blue-700"
               >
-                <PhoneCallIcon size={20} className="text-yellow-300" />
-                {BUSINESS_INFO.phone}
+                <PhoneCallIcon size={18} /> Call Now
+              </a>
+              <a
+                href={`https://wa.me/${BUSINESS_INFO.whatsapp.replace(/\D/g, '')}?text=Hello, I'm interested in your products/services`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 rounded-lg bg-green-500 px-3 py-2.5 text-sm font-semibold text-white"
+              >
+                <MessageCircle size={18} /> WhatsApp
               </a>
             </div>
-
-            {/* Mobile WhatsApp */}
-            <a
-              href={`https://wa.me/${BUSINESS_INFO.whatsapp.replace(/\D/g, '')}?text=Hello, I'm interested in your products/services`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-600 transition"
-            >
-              <MessageCircle size={18} />
-              Chat on WhatsApp
-            </a>
-
-            {/* Mobile Book Now */}
             <Link
               href="/booking"
               onClick={() => setMenuOpen(false)}
-              className="block w-full text-center rounded-lg bg-yellow-400 px-4 py-2 text-base font-semibold text-[#101010] hover:bg-yellow-300 transition"
+              className="mt-3 block w-full rounded-lg bg-blue-600 px-4 py-3 text-center text-base font-semibold text-white"
             >
-              Book Now
+              Book a Service
             </Link>
           </div>
         )}
