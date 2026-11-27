@@ -3,7 +3,7 @@ import products from '@/data/products.json';
 import getPhotoProducts from '@/utils/products';
 import ProductListing from '@/components/ProductListing';
 import { Product } from '@/types/product';
-import { BRANDS, BUSINESS_INFO } from '@/data/constants';
+import { BUSINESS_INFO } from '@/data/constants';
 import { MessageCircle, Phone } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -20,16 +20,16 @@ export default function ChimneysPage() {
   const whatsapp = `https://wa.me/${BUSINESS_INFO.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent("Hello, I'd like help choosing a kitchen chimney")}`;
 
   return (
-    <main className="min-h-screen bg-gray-50 pb-20">
-      <section className="bg-gradient-to-br from-slate-800 via-slate-700 to-blue-800 pt-36 pb-16 text-white">
+    <main className="min-h-screen bg-white pb-20">
+      <section className="pt-36 pb-16 text-gray-900">
         <div className="mx-auto max-w-7xl px-4">
-          <p className="text-sm font-semibold uppercase tracking-widest text-blue-200">
+          <p className="text-sm font-semibold uppercase tracking-widest text-blue-600">
             Kitchen Chimneys
           </p>
           <h1 className="mt-3 max-w-3xl text-3xl font-extrabold md:text-5xl">
             Hindware kitchen chimneys for a cleaner kitchen
           </h1>
-          <p className="mt-4 max-w-2xl text-lg text-blue-100">
+          <p className="mt-4 max-w-2xl text-lg text-gray-600">
             Chimneys that clear smoke, grease and odour, with installation,
             cleaning and repair in Soro, Balasore and nearby villages.
           </p>
@@ -53,11 +53,7 @@ export default function ChimneysPage() {
       </section>
 
       <div className="mx-auto max-w-7xl px-4 pt-10">
-        <ProductListing
-          products={chimneys}
-          brands={BRANDS['kitchen-chimneys']}
-          searchPlaceholder="Search chimney model or feature..."
-        />
+        <ProductListing products={chimneys} />
       </div>
     </main>
   );

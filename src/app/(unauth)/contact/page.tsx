@@ -47,7 +47,7 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="mx-auto mt-28 max-w-3xl px-4 text-[#101010]">
+    <main className="mx-auto mt-28 max-w-3xl px-4 pb-16 text-[#101010]">
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

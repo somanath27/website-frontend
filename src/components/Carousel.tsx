@@ -185,14 +185,14 @@ export default function Carousel() {
               </div>
 
               <div className="order-1 min-w-0 md:order-2">
-                <div className="relative mx-auto aspect-[4/3] w-full max-w-lg overflow-hidden rounded-3xl bg-white shadow-xl ring-1 ring-blue-100">
+                <div className="relative mx-auto aspect-[4/3] w-full max-w-lg overflow-hidden rounded-2xl">
                   <Image
                     src={slide.image}
                     alt={slide.alt}
                     fill
                     priority={index === 0}
                     sizes="(max-width: 768px) 90vw, 50vw"
-                    className="object-contain p-6"
+                    className="object-cover"
                   />
                 </div>
               </div>

@@ -40,9 +40,9 @@ export default function ProductsPage() {
           <Link
             key={c.href}
             href={c.href}
-            className="group overflow-hidden rounded-2xl bg-white shadow-md transition hover:-translate-y-1 hover:shadow-xl"
+            className="group overflow-hidden rounded-2xl shadow-md transition hover:-translate-y-1 hover:shadow-xl"
           >
-            <div className="relative aspect-[16/10] bg-white">
+            <div className="relative aspect-[16/10]">
               <Image
                 src={c.image}
                 alt={c.title}

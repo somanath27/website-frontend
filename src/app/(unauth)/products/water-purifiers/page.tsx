@@ -3,7 +3,7 @@ import products from '@/data/products.json';
 import getPhotoProducts from '@/utils/products';
 import ProductListing from '@/components/ProductListing';
 import { Product } from '@/types/product';
-import { BRANDS, BUSINESS_INFO } from '@/data/constants';
+import { BUSINESS_INFO } from '@/data/constants';
 import { MessageCircle, Phone } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -20,16 +20,16 @@ export default function WaterPurifiersPage() {
   const whatsapp = `https://wa.me/${BUSINESS_INFO.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent("Hello, I'd like help choosing a water purifier")}`;
 
   return (
-    <main className="min-h-screen bg-gray-50 pb-20">
-      <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-600 pt-36 pb-16 text-white">
+    <main className="min-h-screen bg-white pb-20">
+      <section className="pt-36 pb-16 text-gray-900">
         <div className="mx-auto max-w-7xl px-4">
-          <p className="text-sm font-semibold uppercase tracking-widest text-blue-100">
+          <p className="text-sm font-semibold uppercase tracking-widest text-gray-600">
             Water Purifiers
           </p>
           <h1 className="mt-3 max-w-3xl text-3xl font-extrabold md:text-5xl">
             Find the right water purifier for your home
           </h1>
-          <p className="mt-4 max-w-2xl text-lg text-blue-100">
+          <p className="mt-4 max-w-2xl text-lg text-gray-600">
             KENT, Livpure and Kenstar purifiers, with installation, repair and
             maintenance across Soro, Balasore and nearby villages.
           </p>
@@ -53,11 +53,7 @@ export default function WaterPurifiersPage() {
       </section>
 
       <div className="mx-auto max-w-7xl px-4 pt-10">
-        <ProductListing
-          products={waterPurifiers}
-          brands={BRANDS['water-purifiers']}
-          searchPlaceholder="Search by model, brand or feature..."
-        />
+        <ProductListing products={waterPurifiers} />
       </div>
     </main>
   );

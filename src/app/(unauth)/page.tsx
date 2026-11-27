@@ -1,6 +1,4 @@
 import Carousel from '@/components/Carousel';
-import AnnouncementBar from '@/components/AnnouncementBar';
-import FloatingCTA from '@/components/FloatingCTA';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import products from '@/data/products.json';
@@ -37,8 +35,6 @@ export default function HomePage() {
 
   return (
     <main className="w-full mx-auto">
-      <AnnouncementBar />
-
       {/* Hero Carousel */}
       <Carousel />
 
@@ -360,9 +356,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Floating Mobile CTA */}
-      <FloatingCTA />
     </main>
   );
 }
